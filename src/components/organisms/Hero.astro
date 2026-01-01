@@ -3,50 +3,59 @@ import Button from "../atoms/Button.astro";
 ---
 
 <section
-    class="relative bg-gradient-to-br from-inkoo-black via-gray-900 to-inkoo-black text-white py-20 sm:py-28 lg:py-36 overflow-hidden"
+  class="relative pt-32 pb-20 sm:pt-40 sm:pb-24 lg:pt-48 lg:pb-32 overflow-hidden"
 >
-    <!-- Background accent -->
-    <div
-        class="absolute top-0 right-0 w-1/2 h-full bg-inkoo-magenta opacity-5 blur-3xl"
-    >
-    </div>
-    <div
-        class="absolute bottom-0 left-0 w-1/2 h-full bg-inkoo-cyan opacity-5 blur-3xl"
-    >
-    </div>
+  <!-- Abstract Background Elements -->
+  <div
+    class="absolute top-0 right-0 -mr-20 -mt-20 w-[600px] h-[600px] bg-inkoo-magenta/20 rounded-full blur-[100px] animate-float"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 left-0 -ml-20 -mb-20 w-[500px] h-[500px] bg-inkoo-cyan/20 rounded-full blur-[100px] animate-float"
+    style="animation-delay: -3s;"
+  >
+  </div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl">
-            <!-- Headline -->
-            <h1
-                class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6"
-            >
-                Impresión de Camisetas
-                <span class="text-inkoo-magenta">Profesional</span>
-                <span class="block mt-2 text-inkoo-yellow">para Tu Negocio</span
-                >
-            </h1>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <!-- Headline -->
+      <h1
+        class="font-heading font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-tight mb-8 animate-slide-up"
+        style="animation-duration: 0.8s;"
+      >
+        Impresión de Camisetas <br class="hidden sm:block" />
+        <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-inkoo-magenta to-inkoo-purple"
+          >Profesional</span
+        >
+        <span class="text-white"> para Tu Negocio</span>
+      </h1>
 
-            <!-- Subheadline -->
-            <p class="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
-                Sublimación de alta calidad para gimnasios, empresas de
-                construcción y organizadores de eventos. Servicio rápido,
-                resultados impecables, atención local.
-            </p>
+      <!-- Subheadline -->
+      <p
+        class="text-xl sm:text-2xl text-gray-300 mb-10 leading-relaxed max-w-2xl mx-auto animate-slide-up"
+        style="animation-delay: 0.2s; animation-duration: 0.8s; opacity: 0; animation-fill-mode: forwards;"
+      >
+        Sublimación de alta calidad para gimnasios, empresas de construcción y
+        eventos. Servicio rápido y atención local.
+      </p>
 
-            <!-- Primary CTA -->
-            <div class="flex flex-col sm:flex-row gap-4">
-                <Button variant="primary" size="large" href="#contacto">
-                    Solicitar Presupuesto
-                </Button>
-                <Button
-                    variant="secondary"
-                    size="large"
-                    href="https://wa.me/34633272890"
-                >
-                    WhatsApp Directo
-                </Button>
-            </div>
-        </div>
+      <!-- Primary CTA -->
+      <div
+        class="flex flex-col sm:flex-row justify-center gap-6 animate-slide-up"
+        style="animation-delay: 0.4s; animation-duration: 0.8s; opacity: 0; animation-fill-mode: forwards;"
+      >
+        <Button variant="primary" size="large" href="#contacto">
+          Solicitar Presupuesto
+        </Button>
+        <Button
+          variant="secondary"
+          size="large"
+          href="https://wa.me/34633272890"
+        >
+          WhatsApp Directo
+        </Button>
+      </div>
     </div>
+  </div>
 </section>

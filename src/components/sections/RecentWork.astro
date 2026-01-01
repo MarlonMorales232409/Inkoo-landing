@@ -1,54 +1,71 @@
 ---
-// Placeholders for implementation plan
-const recentWorks = [
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import gymTshirt from "../../assets/images/gym-tshirt.png";
+import constructionUniform from "../../assets/images/construction-uniform.png";
+import festivalMerch from "../../assets/images/festival-merch.png";
+
+interface WorkItem {
+  title: string;
+  image: ImageMetadata;
+  category: string;
+}
+
+const recentWorks: WorkItem[] = [
   {
     title: "Camisetas Gimnasio PowerFit",
-    image: "https://via.placeholder.com/600x600?text=Gimnasio+PowerFit",
+    image: gymTshirt,
     category: "Deportivo",
   },
   {
     title: "Uniformes Construcciones S.L.",
-    image: "https://via.placeholder.com/600x600?text=Construcciones+SL",
+    image: constructionUniform,
     category: "Corporativo",
   },
   {
     title: "Merch Festival de Verano",
-    image: "https://via.placeholder.com/600x600?text=Festival+Verano",
+    image: festivalMerch,
     category: "Eventos",
   },
 ];
 ---
 
-<section class="py-16 sm:py-20 lg:py-24 bg-white">
+<section class="py-20 lg:py-32 relative">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl sm:text-4xl font-bold text-inkoo-black mb-4">
-        Nuestros Resultados Hablan por Sí Mismos
+    <div class="text-center mb-16">
+      <h2
+        class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-6"
+      >
+        Nuestros Resultados <span class="text-inkoo-magenta"
+          >Hablan por Sí Mismos</span
+        >
       </h2>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+      <p class="text-lg text-gray-400 max-w-2xl mx-auto">
         Trabajos reales para clientes exigentes. Calidad que se ve y se siente.
       </p>
     </div>
-
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {
         recentWorks.map((work) => (
-          <div class="group relative overflow-hidden rounded-2xl shadow-lg border border-gray-100">
-            <div class="aspect-square bg-gray-200 overflow-hidden">
-              <img
+          <div class="group relative overflow-hidden rounded-2xl shadow-2xl border border-white/5 bg-inkoo-black/50 backdrop-blur-sm">
+            <div class="aspect-[4/5] overflow-hidden">
+              <Image
                 src={work.image}
                 alt={work.title}
-                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                width="600"
-                height="600"
-                loading="lazy"
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                width={600}
+                height={750}
               />
             </div>
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-              <p class="text-inkoo-cyan font-medium text-sm mb-1">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+            <div class="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+              <span class="inline-block px-3 py-1 bg-inkoo-cyan/20 text-inkoo-cyan text-xs font-bold uppercase tracking-wider rounded-full mb-3 backdrop-blur-md border border-inkoo-cyan/20">
                 {work.category}
-              </p>
-              <h3 class="text-white text-xl font-bold">{work.title}</h3>
+              </span>
+              <h3 class="text-white text-2xl font-heading font-bold mb-2 group-hover:text-inkoo-yellow transition-colors duration-300">
+                {work.title}
+              </h3>
+              <div class="h-1 w-12 bg-inkoo-magenta rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
             </div>
           </div>
         ))

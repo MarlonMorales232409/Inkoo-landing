@@ -3,93 +3,82 @@ import FormField from "../molecules/FormField.astro";
 import Button from "../atoms/Button.astro";
 ---
 
-<section id="contacto" class="py-16 sm:py-20 lg:py-24 bg-white">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Section Header -->
-        <div class="text-center mb-12">
-            <h2 class="text-3xl sm:text-4xl font-bold text-inkoo-black mb-4">
-                Solicita Tu Presupuesto
-            </h2>
-            <p class="text-lg text-gray-600">
-                Completa el formulario y nos pondremos en contacto contigo en
-                menos de 24 horas.
-            </p>
-        </div>
-
-        <!-- Contact Form -->
-        <!-- 
-      FORM INTEGRATION INSTRUCTIONS:
-      
-      For Formspree:
-      1. Sign up at https://formspree.io
-      2. Replace action="YOUR_FORM_ENDPOINT" with your Formspree endpoint
-      3. Example: action="https://formspree.io/f/YOUR_FORM_ID"
-      
-      For Netlify Forms:
-      1. Add netlify attribute to the form tag
-      2. Add hidden input: <input type="hidden" name="form-name" value="contacto" />
-      3. Form submissions will appear in your Netlify dashboard
-    -->
-        <form
-            action="https://formspree.io/f/YOUR_FORM_ID"
-            method="POST"
-            class="bg-gray-50 p-6 sm:p-8 rounded-xl shadow-sm"
-        >
-            <FormField
-                label="Nombre"
-                name="nombre"
-                id="nombre"
-                type="text"
-                placeholder="Juan Pérez"
-                required={true}
-            />
-
-            <FormField
-                label="Teléfono"
-                name="telefono"
-                id="telefono"
-                type="tel"
-                placeholder="+34 600 000 000"
-                required={true}
-            />
-
-            <FormField
-                label="Nombre del Negocio"
-                name="negocio"
-                id="negocio"
-                type="text"
-                placeholder="Mi Empresa S.L."
-                required={true}
-            />
-
-            <FormField
-                label="Mensaje"
-                name="mensaje"
-                id="mensaje"
-                type="textarea"
-                placeholder="Cuéntanos sobre tu proyecto..."
-                required={true}
-                rows={5}
-            />
-
-            <!-- Hidden field to capture form destination -->
-            <input
-                type="hidden"
-                name="_subject"
-                value="Nuevo contacto desde Inkoo Landing"
-            />
-            <input type="hidden" name="_cc" value="inkosub@gmail.com" />
-
-            <div class="mt-6">
-                <Button
-                    type="submit"
-                    variant="primary"
-                    size="large"
-                    class="w-full sm:w-auto"
-                >
-                    Enviar Solicitud
-                </Button>
-            </div>
-        </form>
+<section id="contacto" class="py-20 lg:py-32 relative">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2
+        class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-6"
+      >
+        Solicita Tu <span class="text-inkoo-cyan">Presupuesto</span>
+      </h2>
+      <p class="text-lg text-gray-400">
+        Completa el formulario y nos pondremos en contacto contigo en menos de
+        24 horas.
+      </p>
     </div>
+
+    <!-- Contact Form -->
+    <form
+      action="https://formspree.io/f/YOUR_FORM_ID"
+      method="POST"
+      class="bg-inkoo-black/60 backdrop-blur-md p-8 sm:p-10 rounded-2xl border border-white/10 shadow-2xl"
+    >
+      <FormField
+        label="Nombre"
+        name="nombre"
+        id="nombre"
+        type="text"
+        placeholder="Juan Pérez"
+        required={true}
+      />
+
+      <FormField
+        label="Teléfono"
+        name="telefono"
+        id="telefono"
+        type="tel"
+        placeholder="+34 600 000 000"
+        required={true}
+      />
+
+      <FormField
+        label="Nombre del Negocio"
+        name="negocio"
+        id="negocio"
+        type="text"
+        placeholder="Mi Empresa S.L."
+        required={true}
+      />
+
+      <FormField
+        label="Mensaje"
+        name="mensaje"
+        id="mensaje"
+        type="textarea"
+        placeholder="Cuéntanos sobre tu proyecto..."
+        required={true}
+        rows={5}
+      />
+
+      <!-- Hidden field to capture form destination -->
+      <input
+        type="hidden"
+        name="_subject"
+        value="Nuevo contacto desde Inkoo Landing"
+      />
+      <input type="hidden" name="_cc" value="inkosub@gmail.com" />
+
+      <div class="mt-6">
+        <Button
+          type="submit"
+          variant="primary"
+          size="large"
+          class="w-full sm:w-auto"
+        >
+          Enviar Solicitud
+        </Button>
+      </div>
+    </form>
+  </div>
 </section>

@@ -9,13 +9,13 @@ const { icon, title, description } = Astro.props;
 ---
 
 <div
-  class="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow duration-200"
+  class="group flex flex-col items-center text-center p-8 bg-inkoo-black/40 backdrop-blur-sm rounded-2xl border border-white/5 hover:border-inkoo-cyan/30 hover:bg-inkoo-black/60 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(34,211,238,0.2)]"
 >
   <div
-    class="w-16 h-16 mb-4 flex items-center justify-center bg-inkoo-magenta bg-opacity-10 rounded-full"
+    class="w-16 h-16 mb-6 flex items-center justify-center bg-gradient-to-br from-inkoo-black to-gray-900 rounded-full border border-white/10 group-hover:border-inkoo-cyan/50 group-hover:scale-110 transition-all duration-300 shadow-inner"
   >
     <svg
-      class="w-8 h-8 text-inkoo-magenta"
+      class="w-8 h-8 text-inkoo-cyan group-hover:text-inkoo-magenta transition-colors duration-300"
       fill="none"
       stroke="currentColor"
       stroke-width="2"
@@ -56,6 +56,14 @@ const { icon, title, description } = Astro.props;
       }
     </svg>
   </div>
-  <h3 class="text-xl font-semibold text-inkoo-black mb-2">{title}</h3>
-  <p class="text-gray-600 text-sm leading-relaxed">{description}</p>
+  <h3
+    class="text-xl font-heading font-bold text-white mb-3 group-hover:text-inkoo-cyan transition-colors duration-300"
+  >
+    {title}
+  </h3>
+  <p
+    class="text-gray-400 text-base leading-relaxed group-hover:text-gray-300 transition-colors duration-300"
+  >
+    {description}
+  </p>
 </div>

@@ -3,20 +3,25 @@ import Button from "../atoms/Button.astro";
 import Logo from "../atoms/Logo.astro";
 ---
 
-<nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16 sm:h-20">
-            <!-- Logo -->
-            <div class="flex-shrink-0">
-                <a href="/" class="flex items-center">
-                    <Logo class="h-12 sm:h-14 w-auto" />
-                </a>
-            </div>
+<nav
+  class="sticky top-0 z-50 bg-inkoo-black/80 backdrop-blur-md border-b border-white/10 transition-all duration-300"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16 sm:h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center group">
+          <Logo
+            class="h-12 sm:h-14 w-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-transform duration-300 group-hover:scale-105"
+            variant="light"
+          />
+        </a>
+      </div>
 
-            <!-- CTA Button -->
-            <div class="flex items-center">
-                <Button variant="primary" href="#contacto"> Contacto </Button>
-            </div>
-        </div>
+      <!-- CTA Button -->
+      <div class="flex items-center">
+        <Button variant="primary" href="#contacto"> Contacto </Button>
+      </div>
     </div>
+  </div>
 </nav>

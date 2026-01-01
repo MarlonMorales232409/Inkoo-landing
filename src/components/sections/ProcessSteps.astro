@@ -29,25 +29,27 @@ const steps = [
 ];
 ---
 
-<section class="py-16 sm:py-20 bg-gray-50">
+<section class="py-20 lg:py-32 relative">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold text-inkoo-black mb-4">
-        Tu Pedido Listo en 3 Pasos Simples
+    <div class="text-center mb-20">
+      <h2
+        class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-6"
+      >
+        Tu Pedido Listo en <span class="text-inkoo-cyan">3 Pasos Simples</span>
       </h2>
     </div>
 
     <div class="relative grid grid-cols-1 md:grid-cols-3 gap-12">
       <!-- Connector Line (Desktop) -->
       <div
-        class="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gray-200 -z-10"
+        class="hidden md:block absolute top-12 left-[16%] right-[16%] h-1 bg-gradient-to-r from-inkoo-cyan via-inkoo-magenta to-inkoo-cyan opacity-30 -z-10"
       >
       </div>
 
       {
         steps.map((step, index) => (
-          <div class="flex flex-col items-center text-center">
-            <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-md mb-6 border-4 border-gray-50 relative z-10">
+          <div class="group flex flex-col items-center text-center">
+            <div class="w-24 h-24 bg-inkoo-black rounded-full flex items-center justify-center mb-8 border border-white/10 relative z-10 shadow-[0_0_30px_-5px_rgba(34,211,238,0.2)] group-hover:shadow-[0_0_30px_-5px_rgba(214,24,110,0.5)] group-hover:border-inkoo-magenta/50 transition-all duration-300">
               {step.icon === "file-text" && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -55,11 +57,11 @@ const steps = [
                   height="40"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="#2d9cdb"
-                  stroke-width="2"
+                  stroke="currentColor"
+                  stroke-width="1.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="lucide lucide-file-text"
+                  class="text-inkoo-cyan group-hover:text-inkoo-magenta transition-colors duration-300"
                 >
                   <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
                   <path d="M14 2v4a2 2 0 0 0 2 2h4" />
@@ -75,11 +77,11 @@ const steps = [
                   height="40"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="#d6186e"
-                  stroke-width="2"
+                  stroke="currentColor"
+                  stroke-width="1.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="lucide lucide-monitor-check"
+                  class="text-inkoo-cyan group-hover:text-inkoo-magenta transition-colors duration-300"
                 >
                   <path d="m9 10 2 2 4-4" />
                   <rect width="20" height="14" x="2" y="3" rx="2" />
@@ -94,11 +96,11 @@ const steps = [
                   height="40"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="#2d9cdb"
-                  stroke-width="2"
+                  stroke="currentColor"
+                  stroke-width="1.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="lucide lucide-truck"
+                  class="text-inkoo-cyan group-hover:text-inkoo-magenta transition-colors duration-300"
                 >
                   <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
                   <path d="M15 18H9" />
@@ -107,11 +109,17 @@ const steps = [
                   <circle cx="7" cy="18" r="2" />
                 </svg>
               )}
+
+              <div class="absolute -bottom-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-inkoo-magenta font-bold text-sm tracking-widest uppercase">
+                Paso {index + 1}
+              </div>
             </div>
-            <h3 class="text-xl font-bold text-inkoo-black mb-2">
+            <h3 class="text-2xl font-heading font-bold text-white mb-3 group-hover:text-inkoo-cyan transition-colors duration-300">
               {step.title}
             </h3>
-            <p class="text-gray-600 max-w-xs">{step.desc}</p>
+            <p class="text-gray-400 text-lg leading-relaxed max-w-xs">
+              {step.desc}
+            </p>
           </div>
         ))
       }
