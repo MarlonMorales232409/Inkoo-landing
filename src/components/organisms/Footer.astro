@@ -1,0 +1,115 @@
+---
+import { Image } from "astro:assets";
+import instagramQr from "../../assets/inkoosub_qr.png";
+import Logo from "../atoms/Logo.astro";
+
+// Footer component for Inkoo Sublimations
+---
+
+<footer class="bg-[#121212] text-white py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12"
+        >
+            <!-- Brand & Description -->
+            <div>
+                <div class="mb-6 relative inline-block">
+                    <!-- Subtle Logo Glow - No borders, no hover, just light -->
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-gradient-to-tr from-inkoo-magenta to-inkoo-cyan opacity-40 blur-2xl rounded-full pointer-events-none"
+                    >
+                    </div>
+                    <div class="relative z-10">
+                        <Logo class="h-14 w-auto" variant="light" />
+                    </div>
+                </div>
+                <p class="text-gray-400 leading-relaxed">
+                    Impresión profesional de camisetas por sublimación para
+                    gimnasios, empresas de construcción y organizadores de
+                    eventos.
+                </p>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4 text-inkoo-yellow">
+                    Contacto
+                </h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li>
+                        <a
+                            href="mailto:inkosub@gmail.com"
+                            class="hover:text-inkoo-magenta transition-colors"
+                        >
+                            inkosub@gmail.com
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="tel:+34633272890"
+                            class="hover:text-inkoo-magenta transition-colors"
+                        >
+                            +34 633 27 28 90
+                        </a>
+                    </li>
+                    <li class="pt-2">
+                        <span class="text-sm">Servicio local en España</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Instagram QR & Social -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4 text-inkoo-yellow">
+                    Síguenos
+                </h4>
+                <!-- QR Code Placeholder -->
+                <div class="mb-4">
+                    <div
+                        class="w-32 h-32 bg-white rounded-lg p-2 flex items-center justify-center"
+                    >
+                        <!-- 
+              INSTAGRAM QR CODE INSTRUCTIONS:
+              1. Generate your Instagram QR code from the Instagram app or https://www.qr-code-generator.com/
+              2. Save the image as 'instagram-qr.png' 
+              3. Place it in the 'public' folder
+              4. The image will automatically display here
+            -->
+                        <Image
+                            src={instagramQr}
+                            alt="Instagram QR Code"
+                            class="w-full h-full object-contain"
+                        />
+                    </div>
+                </div>
+                <a
+                    href="https://www.instagram.com/inkoosub"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-inkoo-magenta hover:text-inkoo-yellow transition-colors inline-flex items-center gap-2"
+                >
+                    <svg
+                        class="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                        ></path>
+                    </svg>
+                    @inkoosub
+                </a>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div
+            class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm"
+        >
+            <p>
+                &copy; {new Date().getFullYear()} Inkoo Sublimations. Todos los derechos
+                reservados.
+            </p>
+        </div>
+    </div>
+</footer>

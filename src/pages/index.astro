@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/organisms/Navbar.astro";
+import Hero from "../components/organisms/Hero.astro";
+import ValueProposition from "../components/organisms/ValueProposition.astro";
+import ContactForm from "../components/organisms/ContactForm.astro";
+import Footer from "../components/organisms/Footer.astro";
+import FloatingWhatsApp from "../components/organisms/FloatingWhatsApp.astro";
+---
+
+<Layout
+	title="Inkoo Sublimations - Impresión Profesional de Camisetas para Negocios"
+	description="Sublimación de alta calidad para gimnasios, empresas de construcción y organizadores de eventos. Servicio rápido, resultados impecables, atención local en España."
+>
+	<!-- Navigation -->
+	<Navbar />
+
+	<!-- Main Content -->
+	<main>
+		<!-- Hero Section -->
+		<article>
+			<Hero />
+		</article>
+
+		<!-- Value Proposition Section -->
+		<section>
+			<ValueProposition />
+		</section>
+
+		<!-- Contact Form Section -->
+		<section>
+			<ContactForm />
+		</section>
+	</main>
+
+	<!-- Footer -->
+	<Footer />
+
+	<!-- Floating WhatsApp Button -->
+	<FloatingWhatsApp />
+</Layout>

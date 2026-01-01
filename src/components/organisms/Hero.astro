@@ -1,0 +1,52 @@
+---
+import Button from "../atoms/Button.astro";
+---
+
+<section
+    class="relative bg-gradient-to-br from-inkoo-black via-gray-900 to-inkoo-black text-white py-20 sm:py-28 lg:py-36 overflow-hidden"
+>
+    <!-- Background accent -->
+    <div
+        class="absolute top-0 right-0 w-1/2 h-full bg-inkoo-magenta opacity-5 blur-3xl"
+    >
+    </div>
+    <div
+        class="absolute bottom-0 left-0 w-1/2 h-full bg-inkoo-cyan opacity-5 blur-3xl"
+    >
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+            <!-- Headline -->
+            <h1
+                class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+            >
+                Impresión de Camisetas
+                <span class="text-inkoo-magenta">Profesional</span>
+                <span class="block mt-2 text-inkoo-yellow">para Tu Negocio</span
+                >
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
+                Sublimación de alta calidad para gimnasios, empresas de
+                construcción y organizadores de eventos. Servicio rápido,
+                resultados impecables, atención local.
+            </p>
+
+            <!-- Primary CTA -->
+            <div class="flex flex-col sm:flex-row gap-4">
+                <Button variant="primary" size="large" href="#contacto">
+                    Solicitar Presupuesto
+                </Button>
+                <Button
+                    variant="secondary"
+                    size="large"
+                    href="https://wa.me/34633272890"
+                >
+                    WhatsApp Directo
+                </Button>
+            </div>
+        </div>
+    </div>
+</section>

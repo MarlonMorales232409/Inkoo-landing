@@ -1,0 +1,117 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Inkoo Sublimations - Impresión Profesional de Camisetas para Negocios",
+	description = "Sublimación de alta calidad para gimnasios, empresas de construcción y organizadores de eventos. Servicio rápido, resultados impecables, atención local en España.",
+} = Astro.props;
+
+// JSON-LD Schema for LocalBusiness
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "LocalBusiness",
+	name: "Inkoo Sublimations",
+	image: "https://inkoo-sublimations.com/logo.png",
+	description: description,
+	address: {
+		"@type": "PostalAddress",
+		addressCountry: "ES",
+		addressLocality: "España",
+	},
+	telephone: "+34633272890",
+	email: "inkosub@gmail.com",
+	priceRange: "$$",
+	openingHours: "Mo-Fr 09:00-18:00",
+	areaServed: {
+		"@type": "Country",
+		name: "España",
+	},
+	hasOfferCatalog: {
+		"@type": "OfferCatalog",
+		name: "Servicios de Impresión",
+		itemListElement: [
+			{
+				"@type": "Offer",
+				itemOffered: {
+					"@type": "Service",
+					name: "Sublimación de Camisetas para Gimnasios",
+					description:
+						"Impresión personalizada de camisetas deportivas de alta calidad",
+				},
+			},
+			{
+				"@type": "Offer",
+				itemOffered: {
+					"@type": "Service",
+					name: "Sublimación para Empresas de Construcción",
+					description:
+						"Uniformes personalizados duraderos para equipos de construcción",
+				},
+			},
+			{
+				"@type": "Offer",
+				itemOffered: {
+					"@type": "Service",
+					name: "Sublimación para Eventos",
+					description:
+						"Camisetas personalizadas para eventos corporativos y comerciales",
+				},
+			},
+		],
+	},
+};
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta
+			name="keywords"
+			content="sublimación, impresión camisetas, gimnasios, construcción, eventos, España, personalización textil"
+		/>
+		<meta name="author" content="Inkoo Sublimations" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:locale" content="es_ES" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+		<!-- Google Fonts - Inter -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- JSON-LD Schema -->
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+		<!-- Global Styles -->
+		<style>
+			@import "../styles/global.css";
+		</style>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

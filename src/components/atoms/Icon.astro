@@ -1,0 +1,21 @@
+---
+interface Props {
+  name: string;
+  size?: number;
+  color?: string;
+  class?: string;
+}
+
+const { name, size = 24, color = 'currentColor', class: className = '' } = Astro.props;
+---
+
+<span class={`inline-flex ${className}`} client:load>
+  <iconify-icon icon={`lucide:${name}`} width={size} height={size} style={`color: ${color}`}></iconify-icon>
+</span>
+
+<script>
+  // Dynamically import Lucide icons
+  import('lucide-react').then(() => {
+    // Icons loaded
+  });
+</script>

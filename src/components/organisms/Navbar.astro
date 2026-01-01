@@ -1,0 +1,22 @@
+---
+import Button from "../atoms/Button.astro";
+import Logo from "../atoms/Logo.astro";
+---
+
+<nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16 sm:h-20">
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+                <a href="/" class="flex items-center">
+                    <Logo class="h-12 sm:h-14 w-auto" />
+                </a>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="flex items-center">
+                <Button variant="primary" href="#contacto"> Contacto </Button>
+            </div>
+        </div>
+    </div>
+</nav>
