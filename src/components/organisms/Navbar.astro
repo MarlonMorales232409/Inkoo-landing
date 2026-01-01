@@ -1,27 +1,230 @@
 ---
 import Button from "../atoms/Button.astro";
 import Logo from "../atoms/Logo.astro";
+
+const navLinks = [
+  { name: "Servicios", href: "#servicios" },
+  { name: "Trabajos", href: "#trabajos" },
+  { name: "Proceso", href: "#proceso" },
+  { name: "Garantía", href: "#garantia" },
+  { name: "FAQ", href: "#faq" },
+];
 ---
 
+<!-- Main Navbar -->
 <nav
-  class="sticky top-0 z-50 bg-inkoo-black/80 backdrop-blur-md border-b border-white/10 transition-all duration-300"
+  id="main-navbar"
+  class="fixed top-0 left-0 w-full z-50 transform translate-y-0"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16 sm:h-20">
-      <!-- Logo -->
-      <div class="flex-shrink-0">
-        <a href="/" class="flex items-center group">
+      <!-- Logo with Glow -->
+      <div class="flex-shrink-0 relative">
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-gradient-to-tr from-inkoo-magenta to-inkoo-cyan opacity-60 blur-2xl rounded-full pointer-events-none"
+        >
+        </div>
+        <a href="/" class="flex items-center group relative z-10">
           <Logo
-            class="h-12 sm:h-14 w-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-transform duration-300 group-hover:scale-105"
+            class="h-12 sm:h-14 w-auto transition-transform duration-300 group-hover:scale-105"
             variant="light"
           />
         </a>
       </div>
 
-      <!-- CTA Button -->
-      <div class="flex items-center">
-        <Button variant="primary" href="#contacto"> Contacto </Button>
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-gray-300 hover:text-inkoo-cyan transition-colors font-medium text-sm tracking-wide"
+            >
+              {link.name}
+            </a>
+          ))
+        }
+        <Button variant="primary" href="#contacto" size="small">
+          Contacto
+        </Button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center relative z-[60]">
+        <button
+          id="mobile-menu-btn"
+          class="text-white hover:text-inkoo-cyan transition-colors focus:outline-none"
+          aria-label="Abrir menú"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            id="menu-icon"
+          >
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="hidden"
+            id="close-icon"
+          >
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </button>
       </div>
     </div>
   </div>
 </nav>
+
+<!-- Mobile Menu Overlay (Outside nav for correct z-index) -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 bg-black z-[55] transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col"
+>
+  <!-- Header: Logo + Close Button -->
+  <div
+    class="flex items-center justify-between px-6 pt-6 pb-4 border-b border-white/10"
+  >
+    <a href="/" class="inline-block">
+      <Logo class="h-12 w-auto" variant="light" />
+    </a>
+    <button
+      id="mobile-menu-close"
+      class="text-white hover:text-inkoo-cyan transition-colors"
+      aria-label="Cerrar menú"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M18 6 6 18"></path>
+        <path d="m6 6 12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Content Container -->
+  <div class="flex-1 overflow-y-auto px-6 pt-6">
+    <!-- Navigation Links -->
+    <div class="flex flex-col space-y-4">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-xl font-heading text-white hover:text-inkoo-cyan transition-colors mobile-link"
+          >
+            {link.name}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- CTA Button (Footer) -->
+  <div class="px-6 pb-8 pt-4 border-t border-white/10">
+    <Button variant="primary" href="#contacto" size="large" class="w-full">
+      Solicitar Presupuesto
+    </Button>
+  </div>
+
+  <!-- Background Decor -->
+  <div
+    class="absolute top-20 right-0 w-64 h-64 bg-inkoo-cyan/20 blur-[100px] rounded-full pointer-events-none"
+  >
+  </div>
+  <div
+    class="absolute bottom-20 left-0 w-64 h-64 bg-inkoo-magenta/20 blur-[100px] rounded-full pointer-events-none"
+  >
+  </div>
+</div>
+
+<script>
+  const navbar = document.getElementById("main-navbar");
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileMenuClose = document.getElementById("mobile-menu-close");
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+
+  function closeMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.add("translate-x-full");
+    menuIcon?.classList.remove("hidden");
+    closeIcon?.classList.add("hidden");
+    document.body.style.overflow = "auto";
+  }
+
+  function openMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove("translate-x-full");
+    menuIcon?.classList.add("hidden");
+    closeIcon?.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+  }
+
+  // Scroll Logic
+  function updateNavbar() {
+    if (!navbar) return;
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY < 10) {
+      navbar.classList.remove(
+        "bg-inkoo-black/90",
+        "backdrop-blur-md",
+        "border-b",
+        "border-white/10",
+        "shadow-sm"
+      );
+      navbar.classList.add("bg-transparent");
+    } else {
+      navbar.classList.remove("bg-transparent");
+      navbar.classList.add(
+        "bg-inkoo-black/90",
+        "backdrop-blur-md",
+        "border-b",
+        "border-white/10",
+        "shadow-sm"
+      );
+    }
+  }
+
+  window.addEventListener("scroll", () => {
+    window.requestAnimationFrame(updateNavbar);
+  });
+  updateNavbar();
+
+  // Mobile Menu Logic
+  mobileMenuBtn?.addEventListener("click", openMenu);
+  mobileMenuClose?.addEventListener("click", closeMenu);
+
+  // Close menu when clicking a link
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+</script>

@@ -1,0 +1,111 @@
+---
+import { ChevronDown } from "lucide-react";
+
+const faqs = [
+  {
+    category: "Sobre Tiempos y Envíos",
+    items: [
+      {
+        question: "¿Cuánto tardáis en entregar un pedido?",
+        answer:
+          "Para pedidos estándar, el plazo es de 3 a 5 días laborables. Sin embargo, somos especialistas en urgencias: si tienes un evento o una necesidad inmediata, ofrecemos un **Servicio Exprés de 24/48h**. Al ser un taller local con stock propio, no dependemos de terceros.",
+      },
+      {
+        question: "¿Hacéis envíos o puedo recoger el pedido?",
+        answer:
+          "Enviamos a toda España peninsular. Si estás en nuestra zona (**Blanes y alrededores**), puedes pasar a recogerlo gratuitamente por nuestro taller o incluso podemos acercártelo nosotros mismos si es un pedido de volumen.",
+      },
+    ],
+  },
+  {
+    category: "Sobre Calidad y Garantía",
+    items: [
+      {
+        question: "¿Se va a despegar el logo con los lavados?",
+        answer:
+          "**No**. Usamos sublimación (la tinta se funde con la tela) para camisetas deportivas, lo que hace que el diseño sea imborrable. Para algodón y ropa laboral, utilizamos vinilo textil profesional de alta resistencia. Además, ofrecemos una **garantía de reposición de 3 meses**: si se despega con un uso normal, te hacemos una nueva gratis.",
+      },
+      {
+        question: "¿Qué tipo de camisetas usáis para gimnasios?",
+        answer:
+          "Para deporte utilizamos exclusivamente tejido técnico de poliéster con **'Tacto Seda'**. A diferencia de las camisetas técnicas baratas que pican o pesan, estas son ultra ligeras, transpirables y muy suaves al contacto con la piel. Tus clientes o entrenadores notarán la diferencia.",
+      },
+    ],
+  },
+  {
+    category: "Sobre el Diseño y Pedidos",
+    items: [
+      {
+        question:
+          "No tengo el logo en formato vectorial, ¿sirve una imagen normal?",
+        answer:
+          "**Sí, no te preocupes**. Mándanos lo que tengas (JPG, PNG o incluso una foto de tu tarjeta de visita). Nuestro equipo se encarga de adaptarlo y vectorizarlo para que quede nítido en la camiseta **sin coste extra** en la mayoría de los casos.",
+      },
+      {
+        question: "¿Puedo ver cómo quedará antes de pagar?",
+        answer:
+          "**Siempre**. Antes de poner ni una sola camiseta en la plancha, te enviaremos un **mockup digital** (montaje) por WhatsApp para que veas exactamente cómo quedará el tamaño y la posición. No imprimimos nada hasta que nos des tu 'OK'.",
+      },
+      {
+        question: "¿Hay un pedido mínimo?",
+        answer:
+          "Estamos enfocados a empresas y grupos, por lo que nuestros precios más competitivos son a partir de **10 unidades** (Packs). Sin embargo, si necesitas una muestra inicial para ver la calidad antes de hacer un pedido grande, contáctanos y lo gestionamos.",
+      },
+    ],
+  },
+];
+---
+
+<section class="py-20 lg:py-32 bg-inkoo-black relative">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2
+        class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-6"
+      >
+        Preguntas <span class="text-inkoo-cyan">Frecuentes</span>
+      </h2>
+      <p class="text-lg text-gray-400">
+        Todo lo que necesitas saber antes de hacer tu pedido.
+      </p>
+    </div>
+
+    <div class="space-y-12">
+      {
+        faqs.map((group) => (
+          <div>
+            <h3 class="text-xl font-heading font-bold text-white mb-6 border-b border-white/10 pb-2 inline-block">
+              {group.category}
+            </h3>
+            <div class="space-y-4">
+              {group.items.map((item) => (
+                <details class="group bg-white/5 rounded-xl border border-white/10 overflow-hidden transition-all duration-300 open:bg-white/10 hover:border-white/20">
+                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none text-white font-medium text-lg focus:outline-none">
+                    <span>{item.question}</span>
+                    <span class="transform transition-transform duration-300 group-open:rotate-180 text-inkoo-cyan">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div class="px-6 pb-6 text-gray-400 leading-relaxed animate-fade-in">
+                    <Fragment set:html={item.answer} />
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

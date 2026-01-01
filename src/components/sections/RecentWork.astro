@@ -30,8 +30,25 @@ const recentWorks: WorkItem[] = [
 ];
 ---
 
-<section class="py-20 lg:py-32 relative">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-20 lg:py-32 relative overflow-hidden">
+  <!-- Dynamic Background -->
+  <div class="absolute inset-0 bg-inkoo-black">
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-inkoo-black via-[#0B1120] to-inkoo-black"
+    >
+    </div>
+    <!-- Glowing orbs -->
+    <div
+      class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-inkoo-cyan/5 blur-[120px] rounded-full mix-blend-screen pointer-events-none"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-inkoo-magenta/5 blur-[120px] rounded-full mix-blend-screen pointer-events-none"
+    >
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="text-center mb-16">
       <h2
         class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-6"
@@ -47,7 +64,7 @@ const recentWorks: WorkItem[] = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {
         recentWorks.map((work) => (
-          <div class="group relative overflow-hidden rounded-2xl shadow-2xl border border-white/5 bg-inkoo-black/50 backdrop-blur-sm">
+          <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-inkoo-black/50 backdrop-blur-sm transition-all duration-300 hover:border-inkoo-cyan/30">
             <div class="aspect-[4/5] overflow-hidden">
               <Image
                 src={work.image}
