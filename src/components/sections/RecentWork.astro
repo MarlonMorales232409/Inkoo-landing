@@ -1,0 +1,58 @@
+---
+// Placeholders for implementation plan
+const recentWorks = [
+  {
+    title: "Camisetas Gimnasio PowerFit",
+    image: "https://via.placeholder.com/600x600?text=Gimnasio+PowerFit",
+    category: "Deportivo",
+  },
+  {
+    title: "Uniformes Construcciones S.L.",
+    image: "https://via.placeholder.com/600x600?text=Construcciones+SL",
+    category: "Corporativo",
+  },
+  {
+    title: "Merch Festival de Verano",
+    image: "https://via.placeholder.com/600x600?text=Festival+Verano",
+    category: "Eventos",
+  },
+];
+---
+
+<section class="py-16 sm:py-20 lg:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-inkoo-black mb-4">
+        Nuestros Resultados Hablan por Sí Mismos
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Trabajos reales para clientes exigentes. Calidad que se ve y se siente.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {
+        recentWorks.map((work) => (
+          <div class="group relative overflow-hidden rounded-2xl shadow-lg border border-gray-100">
+            <div class="aspect-square bg-gray-200 overflow-hidden">
+              <img
+                src={work.image}
+                alt={work.title}
+                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                width="600"
+                height="600"
+                loading="lazy"
+              />
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+              <p class="text-inkoo-cyan font-medium text-sm mb-1">
+                {work.category}
+              </p>
+              <h3 class="text-white text-xl font-bold">{work.title}</h3>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

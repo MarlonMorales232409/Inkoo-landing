@@ -1,61 +1,61 @@
 ---
 interface Props {
-    icon: string;
-    title: string;
-    description: string;
+  icon: string;
+  title: string;
+  description: string;
 }
 
 const { icon, title, description } = Astro.props;
 ---
 
 <div
-    class="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200"
+  class="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow duration-200"
 >
-    <div
-        class="w-16 h-16 mb-4 flex items-center justify-center bg-inkoo-magenta bg-opacity-10 rounded-full"
+  <div
+    class="w-16 h-16 mb-4 flex items-center justify-center bg-inkoo-magenta bg-opacity-10 rounded-full"
+  >
+    <svg
+      class="w-8 h-8 text-inkoo-magenta"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
     >
-        <svg
-            class="w-8 h-8 text-inkoo-magenta"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-        >
-            {
-                icon === "zap" && (
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                )
-            }
-            {
-                icon === "award" && (
-                    <g>
-                        <circle cx="12" cy="8" r="6" />
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"
-                        />
-                    </g>
-                )
-            }
-            {
-                icon === "map-pin" && (
-                    <g>
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"
-                        />
-                        <circle cx="12" cy="10" r="3" />
-                    </g>
-                )
-            }
-        </svg>
-    </div>
-    <h3 class="text-xl font-semibold text-inkoo-black mb-2">{title}</h3>
-    <p class="text-gray-600 text-sm leading-relaxed">{description}</p>
+      {
+        icon === "zap" && (
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13 10V3L4 14h7v7l9-11h-7z"
+          />
+        )
+      }
+      {
+        icon === "award" && (
+          <g>
+            <circle cx="12" cy="8" r="6" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"
+            />
+          </g>
+        )
+      }
+      {
+        icon === "map-pin" && (
+          <g>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"
+            />
+            <circle cx="12" cy="10" r="3" />
+          </g>
+        )
+      }
+    </svg>
+  </div>
+  <h3 class="text-xl font-semibold text-inkoo-black mb-2">{title}</h3>
+  <p class="text-gray-600 text-sm leading-relaxed">{description}</p>
 </div>
