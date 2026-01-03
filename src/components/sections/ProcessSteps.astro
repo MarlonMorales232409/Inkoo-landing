@@ -18,27 +18,66 @@ const steps = [
 ];
 ---
 
-<section id="proceso" class="py-20 lg:py-32 relative">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="proceso" class="py-20 lg:py-32 relative bg-white overflow-hidden">
+  <!-- Fresh Background with Glows & Sparkles -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <!-- Cool/Fresh Glows -->
+    <div
+      class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-inkoo-cyan/5 blur-[100px] rounded-full mix-blend-multiply"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-inkoo-blue/5 blur-[100px] rounded-full mix-blend-multiply"
+    >
+    </div>
+
+    <!-- Subtle Sparkles -->
+    <svg
+      class="absolute top-20 left-[10%] w-6 h-6 text-inkoo-cyan/40 animate-pulse"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"
+      ></path>
+    </svg>
+    <svg
+      class="absolute bottom-20 right-[10%] w-8 h-8 text-inkoo-magenta/30 animate-pulse delay-700"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"
+      ></path>
+    </svg>
+    <svg
+      class="absolute top-1/2 right-[5%] w-4 h-4 text-inkoo-yellow/40 animate-pulse delay-1000"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"
+      ></path>
+    </svg>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="text-center mb-20">
       <h2
-        class="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium text-white mb-6"
+        class="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium text-inkoo-black mb-6"
       >
-        Tu Pedido Listo en <span class="text-inkoo-cyan">3 Pasos Simples</span>
+        Tu pedido listo en <span class="text-inkoo-cyan">3 pasos simples</span>
       </h2>
     </div>
 
     <div class="relative grid grid-cols-1 md:grid-cols-3 gap-12">
       <!-- Connector Line (Desktop) -->
       <div
-        class="hidden md:block absolute top-12 left-[16%] right-[16%] h-1 bg-gradient-to-r from-inkoo-cyan via-inkoo-magenta to-inkoo-cyan opacity-30 -z-10"
+        class="hidden md:block absolute top-12 left-[16%] right-[16%] h-1 bg-gradient-to-r from-inkoo-magenta via-inkoo-cyan to-inkoo-magenta opacity-50 -z-10"
       >
       </div>
 
       {
         steps.map((step, index) => (
           <div class="group flex flex-col items-center text-center">
-            <div class="w-24 h-24 bg-inkoo-black rounded-full flex items-center justify-center mb-8 border border-white/10 relative z-10 group-hover:border-inkoo-magenta/50 transition-all duration-300">
+            <div class="w-24 h-24 bg-white shadow-lg rounded-full flex items-center justify-center mb-8 border border-gray-200 relative z-10 group-hover:border-inkoo-magenta/50 transition-all duration-300">
               {step.icon === "file-text" && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +89,7 @@ const steps = [
                   stroke-width="1.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="text-inkoo-cyan group-hover:text-inkoo-magenta transition-colors duration-300"
+                  class="text-inkoo-magenta group-hover:text-inkoo-cyan transition-colors duration-300"
                 >
                   <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
                   <path d="M14 2v4a2 2 0 0 0 2 2h4" />
@@ -70,7 +109,7 @@ const steps = [
                   stroke-width="1.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="text-inkoo-cyan group-hover:text-inkoo-magenta transition-colors duration-300"
+                  class="text-inkoo-magenta group-hover:text-inkoo-cyan transition-colors duration-300"
                 >
                   <path d="m9 10 2 2 4-4" />
                   <rect width="20" height="14" x="2" y="3" rx="2" />
@@ -89,7 +128,7 @@ const steps = [
                   stroke-width="1.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="text-inkoo-cyan group-hover:text-inkoo-magenta transition-colors duration-300"
+                  class="text-inkoo-magenta group-hover:text-inkoo-cyan transition-colors duration-300"
                 >
                   <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
                   <path d="M15 18H9" />
@@ -103,10 +142,10 @@ const steps = [
                 Paso {index + 1}
               </div>
             </div>
-            <h3 class="text-3xl font-heading font-semibold text-white mb-3 group-hover:text-inkoo-cyan transition-colors duration-300">
+            <h3 class="text-3xl font-heading font-semibold text-inkoo-black mb-3 group-hover:text-inkoo-magenta transition-colors duration-300">
               {step.title}
             </h3>
-            <p class="text-gray-400 text-lg leading-relaxed max-w-xs">
+            <p class="text-gray-600 text-lg leading-relaxed max-w-xs">
               {step.desc}
             </p>
           </div>
