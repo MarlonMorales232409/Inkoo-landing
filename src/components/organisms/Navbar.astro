@@ -94,6 +94,34 @@ const navLinks = [
   </div>
 </nav>
 
+<!-- Floating Mobile Menu Button (visible when navbar is hidden) -->
+<div
+  id="floating-menu-btn"
+  class="fixed top-4 right-4 z-[60] md:hidden opacity-0 pointer-events-none transition-all duration-300"
+>
+  <button
+    id="floating-menu-trigger"
+    class="bg-inkoo-black/90 backdrop-blur-md text-white hover:text-inkoo-cyan transition-colors focus:outline-none p-3 rounded-full border border-white/10"
+    aria-label="Abrir menú"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <line x1="4" x2="20" y1="12" y2="12"></line>
+      <line x1="4" x2="20" y1="6" y2="6"></line>
+      <line x1="4" x2="20" y1="18" y2="18"></line>
+    </svg>
+  </button>
+</div>
+
 <!-- Mobile Menu Overlay (Outside nav for correct z-index) -->
 <div
   id="mobile-menu"
@@ -171,6 +199,8 @@ const navLinks = [
   const menuIcon = document.getElementById("menu-icon");
   const closeIcon = document.getElementById("close-icon");
   const mobileLinks = document.querySelectorAll(".mobile-link");
+  const floatingMenuBtn = document.getElementById("floating-menu-btn");
+  const floatingMenuTrigger = document.getElementById("floating-menu-trigger");
 
   function closeMenu() {
     if (!mobileMenu) return;
@@ -178,6 +208,14 @@ const navLinks = [
     menuIcon?.classList.remove("hidden");
     closeIcon?.classList.add("hidden");
     document.body.style.overflow = "auto";
+
+    // Show floating button again if navbar is hidden
+    const isMobile = window.innerWidth < 768;
+    const navbarHidden = navbar?.style.transform === "translateY(-100%)";
+    if (isMobile && navbarHidden && floatingMenuBtn) {
+      floatingMenuBtn.classList.remove("opacity-0", "pointer-events-none");
+      floatingMenuBtn.classList.add("opacity-100", "pointer-events-auto");
+    }
   }
 
   function openMenu() {
@@ -186,7 +224,16 @@ const navLinks = [
     menuIcon?.classList.add("hidden");
     closeIcon?.classList.remove("hidden");
     document.body.style.overflow = "hidden";
+
+    // Hide floating button when menu is open
+    if (floatingMenuBtn) {
+      floatingMenuBtn.classList.remove("opacity-100", "pointer-events-auto");
+      floatingMenuBtn.classList.add("opacity-0", "pointer-events-none");
+    }
   }
+
+  // Floating button also opens menu
+  floatingMenuTrigger?.addEventListener("click", openMenu);
 
   // Scroll Logic
   let lastScrollY = 0;
@@ -194,14 +241,27 @@ const navLinks = [
   function updateNavbar() {
     if (!navbar) return;
     const currentScrollY = window.scrollY;
+    const isMobile = window.innerWidth < 768; // md breakpoint
 
     // Hide/Show navbar based on scroll direction
     if (currentScrollY > lastScrollY && currentScrollY > 100) {
       // Scrolling down & past threshold - hide navbar
       navbar.style.transform = "translateY(-100%)";
+
+      // Show floating button on mobile
+      if (isMobile && floatingMenuBtn) {
+        floatingMenuBtn.classList.remove("opacity-0", "pointer-events-none");
+        floatingMenuBtn.classList.add("opacity-100", "pointer-events-auto");
+      }
     } else {
       // Scrolling up - show navbar
       navbar.style.transform = "translateY(0)";
+
+      // Hide floating button
+      if (floatingMenuBtn) {
+        floatingMenuBtn.classList.remove("opacity-100", "pointer-events-auto");
+        floatingMenuBtn.classList.add("opacity-0", "pointer-events-none");
+      }
     }
 
     // Background style based on scroll position
