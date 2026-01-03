@@ -11,6 +11,7 @@ export default {
                 'inkoo-magenta': '#f472b6', // Softer magenta
                 'inkoo-blue': '#3b82f6',
                 'inkoo-purple': '#8b5cf6',
+                'inkoo-yellow': '#FFC001', // Yellow for accents
             },
             fontFamily: {
                 sans: ['Inter', 'system-ui', 'sans-serif'],

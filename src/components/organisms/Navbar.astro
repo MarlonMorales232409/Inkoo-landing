@@ -14,7 +14,7 @@ const navLinks = [
 <!-- Main Navbar -->
 <nav
   id="main-navbar"
-  class="fixed top-0 left-0 w-full z-50 transform translate-y-0"
+  class="fixed top-0 left-0 w-full z-50 transform translate-y-0 pt-2 transition-transform duration-300"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16 sm:h-20">
@@ -38,7 +38,7 @@ const navLinks = [
           navLinks.map((link) => (
             <a
               href={link.href}
-              class="text-gray-300 hover:text-inkoo-cyan transition-colors font-medium text-sm tracking-wide"
+              class="nav-link text-gray-300 hover:text-inkoo-cyan transition-colors font-medium text-sm tracking-wide relative"
             >
               {link.name}
             </a>
@@ -189,10 +189,22 @@ const navLinks = [
   }
 
   // Scroll Logic
+  let lastScrollY = 0;
+
   function updateNavbar() {
     if (!navbar) return;
     const currentScrollY = window.scrollY;
 
+    // Hide/Show navbar based on scroll direction
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      // Scrolling down & past threshold - hide navbar
+      navbar.style.transform = "translateY(-100%)";
+    } else {
+      // Scrolling up - show navbar
+      navbar.style.transform = "translateY(0)";
+    }
+
+    // Background style based on scroll position
     if (currentScrollY < 10) {
       navbar.classList.remove(
         "bg-inkoo-black/90",
@@ -212,6 +224,8 @@ const navLinks = [
         "shadow-sm"
       );
     }
+
+    lastScrollY = currentScrollY;
   }
 
   window.addEventListener("scroll", () => {
@@ -228,3 +242,20 @@ const navLinks = [
     link.addEventListener("click", closeMenu);
   });
 </script>
+
+<style>
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #00d4ff; /* inkoo-cyan */
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+</style>
