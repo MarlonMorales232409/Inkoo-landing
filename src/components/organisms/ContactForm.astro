@@ -1,9 +1,8 @@
 ---
-import FormField from "../molecules/FormField.astro";
 import Button from "../atoms/Button.astro";
 ---
 
-<section id="contacto" class="py-16 lg:py-20 relative overflow-hidden">
+<section id="contacto" class="py-16 lg:pt-20 lg:pb-52 relative overflow-hidden">
   <!-- Background with glowing orbs -->
   <div
     class="absolute inset-0 bg-gradient-to-br from-inkoo-black via-[#080810] to-inkoo-black"
@@ -18,15 +17,15 @@ import Button from "../atoms/Button.astro";
     </div>
   </div>
 
-  <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <!-- Section Header -->
     <div class="text-center mb-8">
       <h2
-        class="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-white mb-3"
+        class="text-3xl sm:text-4xl lg:text-5xl font-heading font-medium text-white mb-3"
       >
-        Solicita Tu <span class="text-inkoo-cyan">Presupuesto</span>
+        Solicita tu <span class="text-inkoo-cyan">presupuesto</span>
       </h2>
-      <p class="text-gray-400 text-sm">
+      <p class="text-gray-400 text-base">
         Completa el formulario y te contactamos en menos de 24 horas.
       </p>
     </div>
@@ -42,45 +41,163 @@ import Button from "../atoms/Button.astro";
       <form
         action="https://formspree.io/f/YOUR_FORM_ID"
         method="POST"
+        enctype="multipart/form-data"
         class="relative bg-[#0c0c0c] p-6 sm:p-8 rounded-2xl border border-white/10"
       >
-        <div class="grid gap-4">
-          <FormField
-            label="Nombre"
-            name="nombre"
-            id="nombre"
-            type="text"
-            placeholder="Juan Pérez"
-            required={true}
-          />
+        <div class="grid gap-5">
+          <!-- Row 1: Nombre y Apellido -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label
+                for="nombre"
+                class="block text-sm font-medium text-gray-300 mb-2"
+              >
+                Nombre <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                placeholder="Juan"
+                required
+                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-inkoo-cyan focus:ring-1 focus:ring-inkoo-cyan transition-colors"
+              />
+            </div>
+            <div>
+              <label
+                for="apellido"
+                class="block text-sm font-medium text-gray-300 mb-2"
+              >
+                Apellido <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="apellido"
+                id="apellido"
+                placeholder="Pérez"
+                required
+                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-inkoo-cyan focus:ring-1 focus:ring-inkoo-cyan transition-colors"
+              />
+            </div>
+          </div>
 
-          <FormField
-            label="Teléfono"
-            name="telefono"
-            id="telefono"
-            type="tel"
-            placeholder="+34 600 000 000"
-            required={true}
-          />
+          <!-- Row 2: Método de contacto + Input dinámico -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label
+                for="metodo-contacto"
+                class="block text-sm font-medium text-gray-300 mb-2"
+              >
+                Método de contacto <span class="text-red-500">*</span>
+              </label>
+              <select
+                name="metodo_contacto"
+                id="metodo-contacto"
+                required
+                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-inkoo-cyan focus:ring-1 focus:ring-inkoo-cyan transition-colors appearance-none cursor-pointer"
+                style="background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23999%27 stroke-width=%272%27%3e%3cpath d=%27M6 9l6 6 6-6%27/%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px;"
+              >
+                <option value="email">Email</option>
+                <option value="whatsapp">WhatsApp</option>
+              </select>
+            </div>
+            <div>
+              <label
+                id="contacto-label"
+                for="contacto-dato"
+                class="block text-sm font-medium text-gray-300 mb-2"
+              >
+                Tu Email <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                name="contacto_dato"
+                id="contacto-dato"
+                placeholder="tu@email.com"
+                required
+                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-inkoo-cyan focus:ring-1 focus:ring-inkoo-cyan transition-colors"
+              />
+            </div>
+          </div>
 
-          <FormField
-            label="Nombre del Negocio"
-            name="negocio"
-            id="negocio"
-            type="text"
-            placeholder="Mi Empresa S.L."
-            required={true}
-          />
+          <!-- Row 3: Mensaje -->
+          <div>
+            <label
+              for="mensaje"
+              class="block text-sm font-medium text-gray-300 mb-2"
+            >
+              Mensaje <span class="text-red-500">*</span>
+            </label>
+            <textarea
+              name="mensaje"
+              id="mensaje"
+              placeholder="Cuéntanos sobre tu proyecto..."
+              required
+              rows="4"
+              class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-inkoo-cyan focus:ring-1 focus:ring-inkoo-cyan transition-colors resize-none"
+            ></textarea>
+          </div>
 
-          <FormField
-            label="Mensaje"
-            name="mensaje"
-            id="mensaje"
-            type="textarea"
-            placeholder="Cuéntanos sobre tu proyecto..."
-            required={true}
-            rows={3}
-          />
+          <!-- Row 4: Adjuntar imágenes -->
+          <div>
+            <label
+              for="adjuntos"
+              class="block text-sm font-medium text-gray-300 mb-2"
+            >
+              Adjuntar imágenes (opcional)
+            </label>
+            <div class="relative">
+              <input
+                type="file"
+                name="adjuntos"
+                id="adjuntos"
+                accept="image/*"
+                multiple
+                class="hidden"
+              />
+              <div class="flex gap-2">
+                <label
+                  for="adjuntos"
+                  class="flex-1 flex items-center justify-center gap-3 px-4 py-3 bg-white/5 border border-dashed border-white/20 rounded-lg text-gray-400 hover:text-inkoo-cyan hover:border-inkoo-cyan transition-colors cursor-pointer"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"
+                    ></path>
+                  </svg>
+                  <span id="file-label">Haz clic para subir imágenes</span>
+                </label>
+                <button
+                  type="button"
+                  id="clear-files-btn"
+                  class="hidden px-3 py-3 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 hover:bg-red-500/30 hover:text-red-300 transition-colors"
+                  title="Eliminar archivos"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Hidden fields -->
@@ -97,6 +214,69 @@ import Button from "../atoms/Button.astro";
           </Button>
         </div>
       </form>
+
+      <script>
+        // Handle dynamic contact method input
+        const metodoSelect = document.getElementById("metodo-contacto");
+        const contactoInput = document.getElementById(
+          "contacto-dato"
+        ) as HTMLInputElement;
+        const contactoLabel = document.getElementById("contacto-label");
+
+        metodoSelect?.addEventListener("change", (e) => {
+          const target = e.target as HTMLSelectElement;
+          if (target.value === "email") {
+            if (contactoInput) {
+              contactoInput.type = "email";
+              contactoInput.placeholder = "tu@email.com";
+            }
+            if (contactoLabel)
+              contactoLabel.innerHTML =
+                'Tu Email <span class="text-red-500">*</span>';
+          } else if (target.value === "whatsapp") {
+            if (contactoInput) {
+              contactoInput.type = "tel";
+              contactoInput.placeholder = "+34 600 000 000";
+            }
+            if (contactoLabel)
+              contactoLabel.innerHTML =
+                'Tu WhatsApp <span class="text-red-500">*</span>';
+          }
+        });
+
+        // Handle file input label update
+        const fileInput = document.getElementById(
+          "adjuntos"
+        ) as HTMLInputElement;
+        const fileLabel = document.getElementById("file-label");
+        const clearFilesBtn = document.getElementById("clear-files-btn");
+
+        function updateFileUI() {
+          if (fileInput.files && fileInput.files.length > 0) {
+            const count = fileInput.files.length;
+            if (fileLabel) {
+              fileLabel.textContent =
+                count === 1
+                  ? fileInput.files[0].name
+                  : `${count} archivos seleccionados`;
+            }
+            clearFilesBtn?.classList.remove("hidden");
+          } else {
+            if (fileLabel)
+              fileLabel.textContent = "Haz clic para subir imágenes";
+            clearFilesBtn?.classList.add("hidden");
+          }
+        }
+
+        fileInput?.addEventListener("change", updateFileUI);
+
+        clearFilesBtn?.addEventListener("click", () => {
+          if (fileInput) {
+            fileInput.value = "";
+            updateFileUI();
+          }
+        });
+      </script>
     </div>
   </div>
 </section>

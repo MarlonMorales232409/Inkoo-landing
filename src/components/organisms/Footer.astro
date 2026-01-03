@@ -14,9 +14,13 @@ import Logo from "../atoms/Logo.astro";
   >
   </div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 items-start">
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-12 items-start"
+    >
       <!-- Logo (Izquierda) -->
-      <div>
+      <div
+        class="text-center md:text-left flex flex-col items-center md:items-start"
+      >
         <a href="/" class="mb-2 relative inline-block group">
           <!-- Subtle Logo Glow - No borders, no hover, just light -->
           <div
@@ -38,7 +42,9 @@ import Logo from "../atoms/Logo.astro";
       <!-- Contacto (Centro) -->
       <div class="md:flex md:justify-center">
         <div>
-          <h4 class="text-lg font-semibold mb-4 flex items-center gap-2">
+          <h4
+            class="text-lg font-semibold mb-4 flex items-center justify-center md:justify-start gap-2"
+          >
             <svg
               class="w-8 h-8"
               fill="none"
@@ -54,7 +60,7 @@ import Logo from "../atoms/Logo.astro";
             </svg>
             Contacto
           </h4>
-          <ul class="space-y-2 text-gray-400">
+          <ul class="space-y-2 text-gray-400 text-center md:text-left">
             <li>
               <a
                 href="mailto:inkosub@gmail.com"
@@ -77,9 +83,9 @@ import Logo from "../atoms/Logo.astro";
 
       <!-- Síguenos (Derecha) -->
       <div class="md:flex md:justify-end">
-        <div>
+        <div class="flex flex-col items-center md:items-start">
           <h4
-            class="transition-colors text-base font-semibold mb-4 hover:text-inkoo-yellow flex items-center gap-2"
+            class="transition-colors text-base font-semibold mb-4 hover:text-inkoo-yellow flex items-center justify-center md:justify-start gap-2"
           >
             <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
               <path
@@ -97,7 +103,7 @@ import Logo from "../atoms/Logo.astro";
             </a>
           </h4>
           <!-- QR Code Placeholder -->
-          <div class="mb-4">
+          <div class="mb-4 flex justify-center md:justify-start">
             <div
               class="w-32 h-32 bg-white rounded-lg p-2 flex items-center justify-center"
             >

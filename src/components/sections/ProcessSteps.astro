@@ -1,15 +1,4 @@
 ---
-import { FileText, MonitorCheck, Truck } from "lucide-react";
-// Using lucide-react directly in Astro might require a client:load directive if interacting, but for static SVGs inside .astro we can just use the library if configured or embedded svgs.
-// Since I cannot be sure if lucide-react is installed and compatible directly as components in .astro without an adapter, I will use SVGs directly or install it.
-// To be safe and fast, I will valid standard SVG icons for now to avoid dependency issues if not present.
-// Actually, user asked to use Lucide-React icons. I will assume it is available or I should check package.json.
-// Let me check package.json first in next step or just use standard SVG paths that look like Lucide to be 100% safe and dependent-free.
-// Re-reading: "Steps (use Lucide-React icons)". I should try to use them. If not I will fallback.
-// To ensure it works I'll check package.json later. For now I'll write the component assuming I can import or I'll generic SVGs to avoid build breaks if `npm install` is needed.
-
-// SAFE APPROACH: Inline SVGs that look like Lucide. This guarantees no build errors.
-
 const steps = [
   {
     icon: "file-text",
@@ -29,11 +18,11 @@ const steps = [
 ];
 ---
 
-<section class="py-20 lg:py-32 relative">
+<section id="proceso" class="py-20 lg:py-32 relative">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-20">
       <h2
-        class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-6"
+        class="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium text-white mb-6"
       >
         Tu Pedido Listo en <span class="text-inkoo-cyan">3 Pasos Simples</span>
       </h2>
@@ -114,7 +103,7 @@ const steps = [
                 Paso {index + 1}
               </div>
             </div>
-            <h3 class="text-2xl font-heading font-bold text-white mb-3 group-hover:text-inkoo-cyan transition-colors duration-300">
+            <h3 class="text-3xl font-heading font-semibold text-white mb-3 group-hover:text-inkoo-cyan transition-colors duration-300">
               {step.title}
             </h3>
             <p class="text-gray-400 text-lg leading-relaxed max-w-xs">
