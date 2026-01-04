@@ -10,6 +10,7 @@ import RecentWork from "../components/sections/RecentWork.astro";
 import ProcessSteps from "../components/sections/ProcessSteps.astro";
 import GuaranteeBanner from "../components/sections/GuaranteeBanner.astro";
 import FAQ from "../components/sections/FAQ.astro";
+import ScrollToTop from "../components/organisms/ScrollToTop.astro";
 ---
 
 <Layout
@@ -52,6 +53,11 @@ import FAQ from "../components/sections/FAQ.astro";
   <!-- Footer -->
   <Footer />
 
-  <!-- Floating WhatsApp Button -->
-  <FloatingWhatsApp />
+  <!-- Floating Buttons -->
+  <section
+    class="fixed bottom-6 right-6 z-50 flex flex-col gap-y-5 items-center justify-center"
+  >
+    <ScrollToTop />
+    <FloatingWhatsApp />
+  </section>
 </Layout>

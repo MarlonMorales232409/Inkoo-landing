@@ -5,11 +5,11 @@ import ValueCard from "../molecules/ValueCard.astro";
 <section id="ventajas" class="py-20 lg:py-32 relative bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
-    <div class="text-center mb-16">
+    <div class="text-center mb-16" data-aos="fade-up">
       <h2
         class="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium text-inkoo-black mb-6"
       >
-        ¿Por qué elegir <span class="text-inkoo-cyan">Inkoo</span>?
+        ¿Por qué elegir <span class="text-inkoo-magenta">Inkoo</span>?
       </h2>
       <p class="text-lg text-gray-600 max-w-2xl mx-auto">
         Nos especializamos en ofrecer soluciones de impresión rápidas y de alta
@@ -19,21 +19,27 @@ import ValueCard from "../molecules/ValueCard.astro";
 
     <!-- Value Cards Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-      <ValueCard
-        icon="zap"
-        title="Rapidez"
-        description="Entregas rápidas sin comprometer la calidad. Sabemos que tu tiempo es valioso."
-      />
-      <ValueCard
-        icon="award"
-        title="Calidad Premium"
-        description="Sublimación profesional que perdura. Colores vibrantes que no se desvanecen."
-      />
-      <ValueCard
-        icon="map-pin"
-        title="Servicio Local"
-        description="Atención personalizada y cercana. Conocemos las necesidades de tu negocio."
-      />
+      <div data-aos="fade-up" data-aos-delay="0">
+        <ValueCard
+          icon="zap"
+          title="Rapidez"
+          description="Entregas rápidas sin comprometer la calidad. Sabemos que tu tiempo es valioso."
+        />
+      </div>
+      <div data-aos="fade-up" data-aos-delay="200">
+        <ValueCard
+          icon="award"
+          title="Calidad Premium"
+          description="Sublimación profesional que perdura. Colores vibrantes que no se desvanecen."
+        />
+      </div>
+      <div data-aos="fade-up" data-aos-delay="400">
+        <ValueCard
+          icon="map-pin"
+          title="Servicio Local"
+          description="Atención personalizada y cercana. Conocemos las necesidades de tu negocio."
+        />
+      </div>
     </div>
   </div>
 </section>

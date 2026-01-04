@@ -115,5 +115,14 @@ const jsonLd = {
     class="bg-inkoo-black text-white font-sans antialiased selection:bg-inkoo-magenta selection:text-white overflow-x-hidden"
   >
     <slot />
+    <script>
+      import AOS from "aos";
+      import "aos/dist/aos.css";
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+      });
+    </script>
   </body>
 </html>

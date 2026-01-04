@@ -59,25 +59,33 @@ const steps = [
   </div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="text-center mb-20">
+    <div class="text-center mb-20" data-aos="fade-up">
       <h2
         class="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium text-inkoo-black mb-6"
       >
-        Tu pedido listo en <span class="text-inkoo-cyan">3 pasos simples</span>
+        Tu pedido listo en <span class="text-inkoo-magenta"
+          >3 pasos simples</span
+        >
       </h2>
     </div>
 
     <div class="relative grid grid-cols-1 md:grid-cols-3 gap-12">
       <!-- Connector Line (Desktop) -->
       <div
-        class="hidden md:block absolute top-12 left-[16%] right-[16%] h-1 bg-gradient-to-r from-inkoo-magenta via-inkoo-cyan to-inkoo-magenta opacity-50 -z-10"
+        class="hidden md:block absolute top-12 left-[16%] right-[16%] h-1 bg-gray-100 opacity-100 -z-10"
+        data-aos="fade-in"
+        data-aos-delay="600"
       >
       </div>
 
       {
         steps.map((step, index) => (
-          <div class="group flex flex-col items-center text-center">
-            <div class="w-24 h-24 bg-white shadow-lg rounded-full flex items-center justify-center mb-8 border border-gray-200 relative z-10 group-hover:border-inkoo-magenta/50 transition-all duration-300">
+          <div
+            class="group flex flex-col items-center text-center"
+            data-aos="fade-up"
+            data-aos-delay={index * 200}
+          >
+            <div class="w-24 h-24 bg-white shadow-lg rounded-full flex items-center justify-center mb-8 border border-gray-100 relative z-10 group-hover:border-inkoo-magenta/50 transition-all duration-300 shadow-gray-200/50">
               {step.icon === "file-text" && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +97,7 @@ const steps = [
                   stroke-width="1.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="text-inkoo-magenta group-hover:text-inkoo-cyan transition-colors duration-300"
+                  class="text-inkoo-magenta transition-colors duration-300"
                 >
                   <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
                   <path d="M14 2v4a2 2 0 0 0 2 2h4" />
@@ -109,7 +117,7 @@ const steps = [
                   stroke-width="1.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="text-inkoo-magenta group-hover:text-inkoo-cyan transition-colors duration-300"
+                  class="text-inkoo-magenta transition-colors duration-300"
                 >
                   <path d="m9 10 2 2 4-4" />
                   <rect width="20" height="14" x="2" y="3" rx="2" />
@@ -128,7 +136,7 @@ const steps = [
                   stroke-width="1.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="text-inkoo-magenta group-hover:text-inkoo-cyan transition-colors duration-300"
+                  class="text-inkoo-magenta transition-colors duration-300"
                 >
                   <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
                   <path d="M15 18H9" />
@@ -137,12 +145,8 @@ const steps = [
                   <circle cx="7" cy="18" r="2" />
                 </svg>
               )}
-
-              <div class="absolute -bottom-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-inkoo-magenta font-bold text-sm tracking-widest uppercase">
-                Paso {index + 1}
-              </div>
             </div>
-            <h3 class="text-3xl font-heading font-semibold text-inkoo-black mb-3 group-hover:text-inkoo-magenta transition-colors duration-300">
+            <h3 class="text-3xl font-heading font-semibold text-inkoo-black mb-3 transition-colors duration-300">
               {step.title}
             </h3>
             <p class="text-gray-600 text-lg leading-relaxed max-w-xs">

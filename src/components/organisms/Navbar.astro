@@ -14,7 +14,7 @@ const navLinks = [
 <!-- Main Navbar -->
 <nav
   id="main-navbar"
-  class="fixed top-0 left-0 w-full z-50 transform translate-y-0 pt-2 transition-transform duration-300"
+  class="fixed top-0 left-0 w-full z-50 transform translate-y-0 pt-5 transition-transform duration-300"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16 sm:h-20">
@@ -26,7 +26,7 @@ const navLinks = [
         </div>
         <a href="/" class="flex items-center group relative z-10">
           <Logo
-            class="h-12 sm:h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+            class="h-14 sm:h-16 w-auto transition-transform duration-300 group-hover:scale-105"
             variant="light"
           />
         </a>
@@ -38,13 +38,18 @@ const navLinks = [
           navLinks.map((link) => (
             <a
               href={link.href}
-              class="nav-link text-gray-300 hover:text-inkoo-cyan transition-colors font-medium text-sm tracking-wide relative"
+              class="nav-link text-gray-300 hover:text-inkoo-cyan transition-colors font-semibold text-sm lg:text-base tracking-wide relative"
             >
               {link.name}
             </a>
           ))
         }
-        <Button variant="primary" href="#contacto" size="small">
+        <Button
+          variant="primary"
+          href="#contacto"
+          size="small"
+          class="font-semibold lg:text-base"
+        >
           Contacto
         </Button>
       </div>
@@ -125,7 +130,7 @@ const navLinks = [
 <!-- Mobile Menu Overlay (Outside nav for correct z-index) -->
 <div
   id="mobile-menu"
-  class="fixed inset-0 bg-black z-[55] transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col"
+  class="fixed inset-0 bg-inkoo-black/80 backdrop-blur-xl z-[55] transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col supports-[backdrop-filter]:bg-inkoo-black/60"
 >
   <!-- Header: Logo + Close Button -->
   <div
@@ -241,28 +246,37 @@ const navLinks = [
     const currentScrollY = window.scrollY;
     const isMobile = window.innerWidth < 768; // md breakpoint
 
-    // Hide/Show navbar based on scroll direction
-    if (currentScrollY > lastScrollY && currentScrollY > 100) {
-      // Scrolling down & past threshold - hide navbar
-      navbar.style.transform = "translateY(-100%)";
+    // Hide/Show navbar based on scroll direction with a threshold
+    const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+    const threshold = 50; // Significant threshold to avoid triggers from layout shifts (like FAQ opening)
 
-      // Show floating button on mobile
-      if (isMobile && floatingMenuBtn) {
-        floatingMenuBtn.classList.remove("opacity-0", "pointer-events-none");
-        floatingMenuBtn.classList.add("opacity-100", "pointer-events-auto");
-      }
-    } else {
-      // Scrolling up - show navbar
-      navbar.style.transform = "translateY(0)";
+    if (scrollDelta > threshold) {
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down & past threshold - hide navbar
+        navbar.style.transform = "translateY(-100%)";
 
-      // Hide floating button
-      if (floatingMenuBtn) {
-        floatingMenuBtn.classList.remove("opacity-100", "pointer-events-auto");
-        floatingMenuBtn.classList.add("opacity-0", "pointer-events-none");
+        // Show floating button on mobile
+        if (isMobile && floatingMenuBtn) {
+          floatingMenuBtn.classList.remove("opacity-0", "pointer-events-none");
+          floatingMenuBtn.classList.add("opacity-100", "pointer-events-auto");
+        }
+      } else {
+        // Scrolling up - show navbar
+        navbar.style.transform = "translateY(0)";
+
+        // Hide floating button
+        if (floatingMenuBtn) {
+          floatingMenuBtn.classList.remove(
+            "opacity-100",
+            "pointer-events-auto"
+          );
+          floatingMenuBtn.classList.add("opacity-0", "pointer-events-none");
+        }
       }
+      lastScrollY = currentScrollY;
     }
 
-    // Background style based on scroll position
+    // Background style based on scroll position (always update regardless of threshold)
     if (currentScrollY < 10) {
       navbar.classList.remove(
         "bg-inkoo-black/90",
@@ -282,8 +296,6 @@ const navLinks = [
         "shadow-sm"
       );
     }
-
-    lastScrollY = currentScrollY;
   }
 
   window.addEventListener("scroll", () => {

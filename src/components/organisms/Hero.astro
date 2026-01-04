@@ -25,8 +25,8 @@ import Button from "../atoms/Button.astro";
     <div class="max-w-4xl">
       <!-- Headline -->
       <h1
-        class="font-heading font-medium text-5xl sm:text-6xl lg:text-7xl leading-snug mb-8 animate-slide-up text-white tracking-tight"
-        style="animation-duration: 0.8s;"
+        class="font-heading font-medium text-5xl sm:text-6xl lg:text-7xl leading-snug mb-8 text-white tracking-tight"
+        data-aos="fade-up"
       >
         Impresión de camisetas <br class="hidden sm:block" />
         <span class="text-inkoo-magenta font-bold">profesional</span>
@@ -35,8 +35,9 @@ import Button from "../atoms/Button.astro";
 
       <!-- Subheadline -->
       <p
-        class="text-xl sm:text-2xl text-gray-200 mb-10 leading-relaxed max-w-2xl animate-slide-up shadow-black/50 drop-shadow-md"
-        style="animation-delay: 0.2s; animation-duration: 0.8s; opacity: 0; animation-fill-mode: forwards;"
+        class="text-xl sm:text-2xl text-gray-200 mb-10 leading-relaxed max-w-2xl shadow-black/50 drop-shadow-md"
+        data-aos="fade-up"
+        data-aos-delay="200"
       >
         Sublimación de alta calidad para gimnasios, empresas de construcción y
         eventos. Servicio rápido y atención local.
@@ -44,8 +45,9 @@ import Button from "../atoms/Button.astro";
 
       <!-- Primary CTA -->
       <div
-        class="flex flex-col sm:flex-row gap-6 animate-slide-up"
-        style="animation-delay: 0.4s; animation-duration: 0.8s; opacity: 0; animation-fill-mode: forwards;"
+        class="flex flex-col sm:flex-row gap-6"
+        data-aos="fade-up"
+        data-aos-delay="400"
       >
         <Button variant="primary" size="large" href="#contacto">
           Solicitar Presupuesto

@@ -7,8 +7,8 @@ export default {
                 'inkoo-black': '#0a0a0a',
                 'inkoo-dark': '#111111',
                 'inkoo-gray': '#e5e5e5',
-                'inkoo-cyan': '#22d3ee', // Updated for a fresher look
-                'inkoo-magenta': '#f472b6', // Softer magenta
+                'inkoo-cyan': '#2491cf', // Updated to strong blue
+                'inkoo-magenta': '#d61574', // Vivid magenta
                 'inkoo-blue': '#3b82f6',
                 'inkoo-purple': '#8b5cf6',
                 'inkoo-yellow': '#FFC001', // Yellow for accents
