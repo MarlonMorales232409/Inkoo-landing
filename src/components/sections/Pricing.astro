@@ -1,0 +1,287 @@
+---
+const pricingTiers = [
+  {
+    name: "Pack Muestras",
+    tagline: "Para probar la calidad antes de pedir cantidad.",
+    price: "45€",
+    priceDetail: "Pago único",
+    features: [
+      "3 Camisetas (Técnicas o Algodón)",
+      "Tu logo impreso",
+      "Envío Incluido",
+      "Ideal para ver tallas y acabados",
+    ],
+    cta: "Pedir Muestras",
+    highlighted: false,
+  },
+  {
+    name: "Pack Pymes / Gimnasios",
+    tagline: "Para equipar a tu equipo o vender en tu centro.",
+    price: "9,90€",
+    priceDetail: "Por unidad",
+    features: [
+      "20 a 50 Unidades",
+      "Sublimación Tacto Seda o Vinilo",
+      "Diseño y maquetación gratis",
+      "Envío Gratis 48h",
+      "Garantía de reposición incluida",
+    ],
+    cta: "Empezar Ahora",
+    highlighted: true,
+    badge: "Más Popular",
+  },
+  {
+    name: "Grandes Volúmenes",
+    tagline: "Eventos, carreras, fiestas mayores.",
+    price: "6,50€",
+    priceDetail: "Por unidad",
+    features: [
+      "+100 Unidades",
+      "Precio especial por cantidad",
+      "Prioridad máxima en producción",
+      "Gestión personalizada del pedido",
+    ],
+    cta: "Solicitar Presupuesto",
+    highlighted: false,
+  },
+];
+---
+
+<section
+  id="precios"
+  class="py-20 lg:py-32 relative overflow-hidden bg-gradient-to-b from-gray-50 to-white"
+>
+  <!-- Background Elements -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <!-- Glows -->
+    <div
+      class="absolute top-0 right-1/4 w-[600px] h-[600px] bg-inkoo-magenta/5 blur-[120px] rounded-full mix-blend-multiply"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-inkoo-cyan/5 blur-[120px] rounded-full mix-blend-multiply"
+    >
+    </div>
+
+    <!-- Sparkles -->
+    <svg
+      class="absolute top-24 right-[15%] w-6 h-6 text-inkoo-magenta/30 animate-pulse"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"
+      ></path>
+    </svg>
+    <svg
+      class="absolute bottom-32 left-[10%] w-8 h-8 text-inkoo-cyan/40 animate-pulse delay-500"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"
+      ></path>
+    </svg>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Header -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2
+        class="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium text-inkoo-black mb-6"
+      >
+        Precios <span class="text-inkoo-magenta">Transparentes</span>
+      </h2>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        Sin letra pequeña. Elige el pack que mejor se adapte a tu negocio.
+      </p>
+    </div>
+
+    <!-- Pricing Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      {
+        pricingTiers.map((tier, index) => (
+          <div
+            class={`relative group ${tier.highlighted ? "md:-mt-4" : ""}`}
+            data-aos="fade-up"
+            data-aos-delay={index * 150}
+          >
+            {/* Popular Badge */}
+            {tier.badge && (
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+                <span class="bg-gradient-to-r from-inkoo-magenta to-pink-600 text-white text-sm font-semibold px-4 py-1.5 rounded-full shadow-lg">
+                  {tier.badge}
+                </span>
+              </div>
+            )}
+
+            {/* Card */}
+            <div
+              class={`relative h-full bg-white rounded-2xl overflow-hidden transition-all duration-300 ${
+                tier.highlighted
+                  ? "border-2 border-inkoo-magenta shadow-2xl shadow-inkoo-magenta/20 md:scale-105"
+                  : "border border-gray-200 shadow-lg hover:shadow-xl hover:border-inkoo-magenta/50"
+              }`}
+            >
+              {/* Highlighted glow */}
+              {tier.highlighted && (
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-inkoo-magenta via-pink-500 to-inkoo-magenta" />
+              )}
+
+              <div class="p-8">
+                {/* Tier Name */}
+                <h3 class="text-2xl font-heading font-semibold text-inkoo-black mb-2">
+                  {tier.name}
+                </h3>
+
+                {/* Tagline */}
+                <p class="text-gray-600 text-sm mb-6 min-h-[40px]">
+                  {tier.tagline}
+                </p>
+
+                {/* Price */}
+                <div class="mb-8">
+                  <div class="flex items-baseline gap-2">
+                    <span
+                      class={`text-5xl font-heading font-bold ${
+                        tier.highlighted
+                          ? "text-inkoo-magenta"
+                          : "text-inkoo-black"
+                      }`}
+                    >
+                      {tier.price}
+                    </span>
+                  </div>
+                  <p class="text-gray-500 text-sm mt-1">{tier.priceDetail}</p>
+                </div>
+
+                {/* Features */}
+                <ul class="space-y-4 mb-8">
+                  {tier.features.map((feature) => (
+                    <li class="flex items-start gap-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class={`w-5 h-5 flex-shrink-0 mt-0.5 ${
+                          tier.highlighted
+                            ? "text-inkoo-magenta"
+                            : "text-inkoo-cyan"
+                        }`}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                      <span class="text-gray-700 text-sm leading-relaxed">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA Button */}
+                <button
+                  class={`w-full py-3.5 px-6 rounded-full font-semibold transition-all duration-300 ${
+                    tier.highlighted
+                      ? "bg-inkoo-magenta text-white hover:bg-pink-600 shadow-lg shadow-inkoo-magenta/30 hover:shadow-xl hover:shadow-inkoo-magenta/40 hover:-translate-y-0.5"
+                      : "bg-transparent border-2 border-inkoo-cyan text-inkoo-cyan hover:bg-inkoo-cyan hover:text-white shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                  }`}
+                >
+                  {tier.cta}
+                </button>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Validation Pack Banner -->
+    <div class="max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="450">
+      <div
+        class="relative bg-gradient-to-br from-inkoo-cyan/10 via-white to-inkoo-magenta/10 rounded-2xl border border-inkoo-cyan/30 p-8 overflow-hidden group hover:shadow-xl transition-all duration-300"
+      >
+        <!-- Background Pattern -->
+        <div
+          class="absolute inset-0 opacity-5 pointer-events-none"
+          style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;);"
+        >
+        </div>
+
+        <div
+          class="relative flex flex-col md:flex-row items-center justify-between gap-6"
+        >
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-inkoo-magenta"
+              >
+                <path d="M9 11 12 14 22 4"></path>
+                <path
+                  d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+                ></path>
+              </svg>
+              <h3 class="text-2xl font-heading font-semibold text-inkoo-black">
+                Pack de Validación
+              </h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed mb-2">
+              ¿Quieres probar antes de comprometerte? Pide una <strong
+                class="text-inkoo-black"
+                >muestra personalizada con tu logo por 25€</strong
+              >.
+            </p>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              <span class="inline-flex items-center gap-1.5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-inkoo-cyan"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 16v-4"></path>
+                  <path d="M12 8h.01"></path>
+                </svg>
+                <strong>100% Reembolsable:</strong>
+              </span>
+              Si haces un pedido de +10 unidades, te descontamos los 25€ de la factura
+              final.
+            </p>
+          </div>
+
+          <div class="flex-shrink-0">
+            <button
+              class="bg-transparent border-2 border-inkoo-cyan text-inkoo-cyan hover:bg-inkoo-cyan hover:text-white px-8 py-3.5 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 whitespace-nowrap"
+            >
+              Pedir Validación
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust Note -->
+    <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="600">
+      <p class="text-gray-500 text-sm">
+        ✓ Sin costes ocultos · ✓ Presupuesto en 24h · ✓ Pago seguro
+      </p>
+    </div>
+  </div>
+</section>
