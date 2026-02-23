@@ -1,17 +1,10 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: node({
-    mode: 'standalone',
-  }),
+  adapter: vercel(),
   integrations: [tailwind()],
-  vite: {
-    server: {
-      allowedHosts: ['3df3-139-47-118-234.ngrok-free.app']
-    }
-  }
 });
