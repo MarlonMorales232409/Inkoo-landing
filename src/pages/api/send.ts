@@ -3,11 +3,24 @@ import { Resend } from "resend";
 
 export const prerender = false;
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
+const apiKey = import.meta.env.RESEND_API_KEY;
+console.log(
+  "[send.ts] RESEND_API_KEY present:",
+  !!apiKey,
+  "length:",
+  apiKey?.length,
+);
+
+const resend = new Resend(apiKey);
 
 export const POST: APIRoute = async ({ request }) => {
+  console.log("[send.ts] POST handler called");
+  console.log("[send.ts] Request method:", request.method);
+  console.log("[send.ts] Request URL:", request.url);
+
   try {
     const formData = await request.formData();
+    console.log("[send.ts] FormData parsed successfully");
 
     const nombre = formData.get("nombre") as string;
     const apellido = formData.get("apellido") as string;
@@ -15,8 +28,17 @@ export const POST: APIRoute = async ({ request }) => {
     const contactoDato = formData.get("contacto_dato") as string;
     const mensaje = formData.get("mensaje") as string;
 
+    console.log("[send.ts] Fields:", {
+      nombre,
+      apellido,
+      metodoContacto,
+      contactoDato: !!contactoDato,
+      mensaje: !!mensaje,
+    });
+
     // Validate required fields
     if (!nombre || !apellido || !contactoDato || !mensaje) {
+      console.log("[send.ts] Validation failed - missing fields");
       return new Response(
         JSON.stringify({
           error: "Todos los campos obligatorios deben estar completos.",
@@ -38,6 +60,8 @@ export const POST: APIRoute = async ({ request }) => {
         });
       }
     }
+
+    console.log("[send.ts] Attachments count:", attachments.length);
 
     // Build email HTML
     const html = `
@@ -79,6 +103,8 @@ export const POST: APIRoute = async ({ request }) => {
       </div>
     `;
 
+    console.log("[send.ts] About to call Resend API...");
+
     const { data, error } = await resend.emails.send({
       from: "Inkoo Web <onboarding@resend.dev>",
       to: ["marlon.morales232409@gmail.com"],
@@ -87,24 +113,43 @@ export const POST: APIRoute = async ({ request }) => {
       ...(attachments.length > 0 && { attachments }),
     });
 
+    console.log(
+      "[send.ts] Resend response - data:",
+      JSON.stringify(data),
+      "error:",
+      JSON.stringify(error),
+    );
+
     if (error) {
-      console.error("Resend error:", error);
+      console.error("[send.ts] Resend error:", JSON.stringify(error));
       return new Response(
         JSON.stringify({
           error: "Error al enviar el email. Inténtalo de nuevo.",
+          details: error,
         }),
         { status: 500, headers: { "Content-Type": "application/json" } },
       );
     }
 
+    console.log("[send.ts] Email sent successfully, id:", data?.id);
     return new Response(JSON.stringify({ success: true, id: data?.id }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
-  } catch (err) {
-    console.error("Server error:", err);
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : String(err);
+    const errorStack = err instanceof Error ? err.stack : undefined;
+    console.error("[send.ts] Server error:", errorMessage);
+    console.error("[send.ts] Error stack:", errorStack);
+    console.error(
+      "[send.ts] Error object:",
+      JSON.stringify(err, Object.getOwnPropertyNames(err as object)),
+    );
     return new Response(
-      JSON.stringify({ error: "Error interno del servidor." }),
+      JSON.stringify({
+        error: "Error interno del servidor.",
+        details: errorMessage,
+      }),
       { status: 500, headers: { "Content-Type": "application/json" } },
     );
   }
