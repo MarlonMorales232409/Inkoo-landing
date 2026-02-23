@@ -1,0 +1,13 @@
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+# Permitir que los LLMs y bots de IA rastreen el sitio para indexar servicios
+User-agent: GPTBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+# Mapa del sitio para Google y Bing
+Sitemap: https://www.inkoosub.com/sitemap-index.xml
