@@ -5,7 +5,7 @@ import Button from "../atoms/Button.astro";
 ---
 
 <section
-  class="relative pt-[20vh] pb-20 sm:pt-[22vh] sm:pb-24 lg:pt-[25vh] lg:pb-32 overflow-hidden min-h-screen flex items-start"
+  class="relative pt-[12vh] pb-20 sm:pt-[14vh] sm:pb-24 lg:pt-[16vh] lg:pb-32 overflow-hidden min-h-screen flex items-start"
 >
   <!-- Background Image with Overlay -->
   <div class="absolute inset-0 z-0">
@@ -22,35 +22,45 @@ import Button from "../atoms/Button.astro";
   </div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-    <div class="max-w-4xl">
-      <!-- Headline -->
-      <h1
-        class="font-heading font-medium text-5xl sm:text-6xl lg:text-7xl leading-snug mb-8 text-white tracking-tight"
+    <div class="max-w-3xl">
+      <!-- Kicker -->
+      <p
+        class="text-inkoo-cyan text-sm sm:text-base font-semibold uppercase tracking-widest mb-5"
         data-aos="fade-up"
       >
-        Impresión de camisetas <br class="hidden sm:block" />
-        <span class="text-inkoo-magenta font-bold">profesional</span>
-        <span class="text-white font-medium"> para tu negocio</span>
+        Taller de estampación textil profesional
+      </p>
+
+      <!-- Headline -->
+      <h1
+        class="font-heading font-medium text-4xl sm:text-5xl lg:text-6xl leading-tight sm:leading-snug mb-6 text-white tracking-tight"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        Personalización textil <span class="text-inkoo-magenta font-bold"
+          >premium</span
+        >. <br />
+        Sin mínimos imposibles.
       </h1>
 
       <!-- Subheadline -->
       <p
-        class="text-xl sm:text-2xl text-gray-200 mb-10 leading-relaxed max-w-2xl shadow-black/50 drop-shadow-md"
+        class="text-lg sm:text-xl text-gray-300 mb-0 leading-loose max-w-xl drop-shadow-md"
         data-aos="fade-up"
         data-aos-delay="200"
       >
-        Sublimación de alta calidad para gimnasios, empresas de construcción y
-        eventos. Servicio rápido y atención local.
+        Estampamos de 5 a 50 unidades para negocios, clubes y eventos. Calidad
+        profesional sin complicaciones.
       </p>
 
       <!-- Primary CTA -->
       <div
-        class="flex flex-col sm:flex-row gap-6"
+        class="flex flex-col sm:flex-row gap-5 mt-12"
         data-aos="fade-up"
         data-aos-delay="400"
       >
-        <Button variant="primary" size="large" href="#contacto">
-          Solicitar Presupuesto
+        <Button variant="primary" size="large" href="#precios">
+          Ver Planes y Precios
         </Button>
         <Button
           variant="secondary"
@@ -58,7 +68,7 @@ import Button from "../atoms/Button.astro";
           href="https://wa.me/34633272890"
           class="backdrop-blur-md bg-white/10 hover:bg-white/20 border border-white/20"
         >
-          WhatsApp Directo
+          Hablamos por WhatsApp
         </Button>
       </div>
     </div>

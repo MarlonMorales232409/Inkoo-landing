@@ -6,9 +6,8 @@ const navLinks = [
   { name: "Servicios", href: "#ventajas" },
   { name: "Trabajos", href: "#trabajos" },
   { name: "Proceso", href: "#proceso" },
-  { name: "Garantía", href: "#garantia" },
   { name: "Precios", href: "#precios" },
-  { name: "FAQ", href: "#faq" },
+  { name: "Preguntas", href: "#faq" },
 ];
 ---
 
@@ -269,7 +268,7 @@ const navLinks = [
         if (floatingMenuBtn) {
           floatingMenuBtn.classList.remove(
             "opacity-100",
-            "pointer-events-auto"
+            "pointer-events-auto",
           );
           floatingMenuBtn.classList.add("opacity-0", "pointer-events-none");
         }
@@ -284,7 +283,7 @@ const navLinks = [
         "backdrop-blur-md",
         "border-b",
         "border-white/10",
-        "shadow-sm"
+        "shadow-sm",
       );
       navbar.classList.add("bg-transparent");
     } else {
@@ -294,7 +293,7 @@ const navLinks = [
         "backdrop-blur-md",
         "border-b",
         "border-white/10",
-        "shadow-sm"
+        "shadow-sm",
       );
     }
   }

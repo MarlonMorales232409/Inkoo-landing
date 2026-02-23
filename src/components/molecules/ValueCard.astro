@@ -22,35 +22,68 @@ const { icon, title, description } = Astro.props;
       viewBox="0 0 24 24"
     >
       {
-        icon === "zap" && (
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M13 10V3L4 14h7v7l9-11h-7z"
-          />
-        )
-      }
-      {
-        icon === "award" && (
+        icon === "package-check" && (
           <g>
-            <circle cx="12" cy="8" r="6" />
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"
+              d="M16 16l2 2 4-4"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m7.5 4.27 9 5.15"
+            />
+            <polyline
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              points="3.29 7 12 12 20.71 7"
+            />
+            <line
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              x1="12"
+              y1="22"
+              x2="12"
+              y2="12"
             />
           </g>
         )
       }
       {
-        icon === "map-pin" && (
+        icon === "diamond" && (
           <g>
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"
+              d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
             />
-            <circle cx="12" cy="10" r="3" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m9 12 2 2 4-4"
+            />
+          </g>
+        )
+      }
+      {
+        icon === "shield-truck" && (
+          <g>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m9 12 2 2 4-4"
+            />
           </g>
         )
       }
