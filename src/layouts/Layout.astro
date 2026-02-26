@@ -8,8 +8,8 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, "https://www.inkoosub.com");
 
 const {
-  title = "Inkoo Sublimation | Sublimación Textil Premium para Negocios — Envíos a toda España",
-  description = "Especialistas en sublimación textil de 5 a 50 unidades para Boxes de Crossfit, empresas de reformas, hostelería y eventos. Calidad premium, entrega rápida y envíos a toda España.",
+  title = "Inkoo Sublimation | Estampación Profesional de Camisetas para Empresas y Equipos",
+  description = "Estampación textil profesional para PYMEs, gimnasios y equipos deportivos. Packs desde 6 unidades con envío gratis. Sublimación y vinilo de alta resistencia. Presupuesto en 24h.",
   ogImage = "https://www.inkoosub.com/og-image.png",
 } = Astro.props;
 
@@ -21,20 +21,25 @@ import "@fontsource/outfit/400.css";
 import "@fontsource/outfit/700.css";
 import "@fontsource/outfit/900.css";
 
-// JSON-LD Schema — Service + LocalBusiness (envíos nacionales e internacionales)
-const jsonLd = {
+// JSON-LD Schema — LocalBusiness + ProfessionalService
+const businessJsonLd = {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "ClothingStore"],
+  "@type": ["LocalBusiness", "ProfessionalService"],
   "@id": "https://www.inkoosub.com/#business",
   name: "Inkoo Sublimation",
   alternateName: "Inkoo Sub",
   url: "https://www.inkoosub.com",
-  logo: "https://www.inkoosub.com/favicon.svg",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://www.inkoosub.com/favicon.svg",
+    width: 512,
+    height: 512,
+  },
   image: ogImage,
-  description,
+  description: "Estampación textil profesional para PYMEs, gimnasios y equipos deportivos en España. Sublimación y vinilo de alta gama en tiradas desde 6 unidades. Packs desde 8,90 EUR por prenda con envío gratis y asegurado.",
   telephone: "+34633272890",
   email: "inkoosub@gmail.com",
-  priceRange: "€€",
+  priceRange: "$$",
   currenciesAccepted: "EUR",
   paymentAccepted: "Transferencia bancaria, Bizum",
   openingHours: "Mo-Fr 09:00-18:00",
@@ -43,7 +48,6 @@ const jsonLd = {
     addressCountry: "ES",
     addressRegion: "Cataluña",
   },
-  // Área de servicio amplia: envíos nacionales e internacionales
   areaServed: [
     {
       "@type": "Country",
@@ -54,50 +58,108 @@ const jsonLd = {
       name: "Unión Europea",
     },
   ],
-  // Públicos objetivo B2B
+  knowsAbout: [
+    "Sublimación textil",
+    "Impresión por sublimación",
+    "Estampación textil profesional",
+    "Camisetas personalizadas para empresas",
+    "Uniformes sublimados",
+    "Ropa deportiva personalizada",
+    "Vinilo textil de alta gama",
+    "Estampación térmica avanzada",
+    "Personalización de prendas para PYMEs",
+  ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Servicios de Sublimación Textil Premium",
+    name: "Packs de Estampación Textil Profesional",
     itemListElement: [
       {
         "@type": "Offer",
+        name: "Pack 6-11 Unidades",
+        description:
+          "Estampación profesional para equipos pequeños y primeros pedidos. Incluye estampado resistente al uso diario, envío gratis y asegurado, y optimización de archivos.",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          priceCurrency: "EUR",
+          price: "11.90",
+          unitText: "por unidad",
+          referenceQuantity: {
+            "@type": "QuantitativeValue",
+            minValue: 6,
+            maxValue: 11,
+            unitCode: "C62",
+          },
+        },
         itemOffered: {
           "@type": "Service",
-          name: "Sublimación para Boxes de Crossfit y Gimnasios",
-          description:
-            "Camisetas técnicas personalizadas para boxes de Crossfit y gimnasios. Tiradas de 5 a 50 unidades, resistentes al sudor y lavados intensivos.",
+          name: "Estampación textil por sublimación y vinilo",
+          provider: { "@id": "https://www.inkoosub.com/#business" },
         },
       },
       {
         "@type": "Offer",
+        name: "Pack 12-24 Unidades",
+        description:
+          "La opción más popular. Ideal para plantillas completas y clubes deportivos. Calidad premium para uso intensivo, envío gratis y asegurado, acabado consistente en todas las unidades.",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          priceCurrency: "EUR",
+          price: "9.90",
+          unitText: "por unidad",
+          referenceQuantity: {
+            "@type": "QuantitativeValue",
+            minValue: 12,
+            maxValue: 24,
+            unitCode: "C62",
+          },
+        },
         itemOffered: {
           "@type": "Service",
-          name: "Uniformes de Empresa — Reformas, Construcción y Oficios",
-          description:
-            "Uniformes sublimados duraderos para equipos de construcción, reformas y oficios. Personalización completa con logotipos y diseños corporativos.",
+          name: "Estampación textil por sublimación y vinilo",
+          provider: { "@id": "https://www.inkoosub.com/#business" },
         },
       },
       {
         "@type": "Offer",
+        name: "Pack 25+ Unidades",
+        description:
+          "El mejor precio por unidad para empresas y eventos con equipos grandes. Prioridad en producción y entrega, envío gratis y asegurado.",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          priceCurrency: "EUR",
+          price: "8.90",
+          unitText: "por unidad",
+          referenceQuantity: {
+            "@type": "QuantitativeValue",
+            minValue: 25,
+            unitCode: "C62",
+          },
+        },
         itemOffered: {
           "@type": "Service",
-          name: "Camisetas para Hostelería Moderna",
-          description:
-            "Uniformes con diseño profesional para restaurantes, bares y locales de hostelería. Imagen de marca impecable con sublimación de alta definición.",
+          name: "Estampación textil por sublimación y vinilo",
+          provider: { "@id": "https://www.inkoosub.com/#business" },
         },
       },
       {
         "@type": "Offer",
+        name: "Muestra de Calidad",
+        description:
+          "1 prenda premium con tu logo estampado para validar acabados antes de hacer un pedido grupal. Incluye descuento de 10 EUR en pedido posterior de 6+ unidades.",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          priceCurrency: "EUR",
+          price: "19.00",
+          unitText: "por unidad",
+        },
         itemOffered: {
           "@type": "Service",
-          name: "Merchandising para Eventos y Festivales",
-          description:
-            "Camisetas y merchandising personalizado para eventos corporativos, deportivos y festivales. Producción rápida desde 5 unidades.",
+          name: "Muestra de estampación textil",
+          provider: { "@id": "https://www.inkoosub.com/#business" },
         },
       },
     ],
   },
-  // Información adicional SEO
   sameAs: ["https://www.instagram.com/inkoosub"],
   aggregateRating: {
     "@type": "AggregateRating",
@@ -106,6 +168,46 @@ const jsonLd = {
     bestRating: "5",
     worstRating: "1",
   },
+};
+
+// WebSite schema for sitelinks search
+const webSiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.inkoosub.com/#website",
+  name: "Inkoo Sublimation",
+  url: "https://www.inkoosub.com",
+  description: "Estampación textil profesional para PYMEs, gimnasios y equipos deportivos en España. Sublimación y vinilo de alta gama.",
+  publisher: { "@id": "https://www.inkoosub.com/#business" },
+  inLanguage: "es",
+};
+
+// WebPage schema
+const webPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": canonicalURL.href,
+  url: canonicalURL.href,
+  name: title,
+  description,
+  isPartOf: { "@id": "https://www.inkoosub.com/#website" },
+  about: { "@id": "https://www.inkoosub.com/#business" },
+  inLanguage: "es",
+  dateModified: new Date().toISOString().split("T")[0],
+};
+
+// BreadcrumbList schema
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Inicio",
+      item: "https://www.inkoosub.com",
+    },
+  ],
 };
 ---
 
@@ -121,11 +223,18 @@ const jsonLd = {
     <meta name="description" content={description} />
     <meta
       name="keywords"
-      content="sublimación textil, camisetas personalizadas, sublimación para empresas, uniformes sublimados, camisetas crossfit, uniformes hostelería, merchandising eventos, sublimación premium, impresión textil España, tiradas cortas camisetas, ropa personalizada negocios"
+      content="estampación textil profesional, sublimación textil, camisetas personalizadas empresas, vinilo textil, uniformes sublimados, camisetas crossfit, uniformes hostelería, merchandising eventos, sublimación premium, impresión textil España, tiradas cortas camisetas, ropa personalizada negocios, sublimación profesional, proveedor sublimación, ropa deportiva sublimada, estampación camisetas, prendas personalizadas PYMEs"
     />
     <meta name="author" content="Inkoo Sublimation" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href={canonicalURL.href} />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Language and Geo targeting -->
+    <meta name="language" content="es" />
+    <meta name="geo.region" content="ES" />
+    <meta name="geo.placename" content="España" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -135,6 +244,8 @@ const jsonLd = {
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Inkoo Sublimation - Estampación textil profesional para empresas y equipos deportivos" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:site_name" content="Inkoo Sublimation" />
 
@@ -143,16 +254,17 @@ const jsonLd = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Inkoo Sublimation - Estampación textil profesional para empresas y equipos deportivos" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg?v=2" />
 
-    <!-- Preconnect para rendimiento -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-
-    <!-- JSON-LD Schema -->
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(businessJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(webSiteJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(webPageJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
 
     <!-- Global Styles -->
     <style>

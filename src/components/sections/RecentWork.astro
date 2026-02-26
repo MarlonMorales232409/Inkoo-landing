@@ -9,6 +9,7 @@ interface WorkItem {
   title: string;
   image: ImageMetadata;
   category: string;
+  alt: string;
 }
 
 const recentWorks: WorkItem[] = [
@@ -16,16 +17,19 @@ const recentWorks: WorkItem[] = [
     title: "Camisetas Gimnasio PowerFit",
     image: gymTshirt,
     category: "Deportivo",
+    alt: "Camisetas deportivas personalizadas por sublimación para gimnasio PowerFit con diseño completo",
   },
   {
     title: "Uniformes Construcciones S.L.",
     image: constructionUniform,
     category: "Corporativo",
+    alt: "Uniformes de trabajo sublimados para empresa de construcción con logotipo corporativo",
   },
   {
     title: "Merch Festival de Verano",
     image: festivalMerch,
     category: "Eventos",
+    alt: "Merchandising personalizado con sublimación textil para festival de verano y eventos",
   },
 ];
 ---
@@ -41,12 +45,12 @@ const recentWorks: WorkItem[] = [
       <h2
         class="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium text-white mb-6"
       >
-        Equipación premium para <span class="text-inkoo-magenta"
-          >equipos y negocios locales</span
+        Proyectos reales para <span class="text-inkoo-magenta"
+          >empresas y equipos reales</span
         >
       </h2>
       <p class="text-lg text-gray-400 max-w-2xl mx-auto">
-        Desde 5 hasta 50 unidades. Calidad profesional, sin mínimos absurdos.
+        Gimnasios, empresas y organizadores de eventos confían en Inkoo para equipar a sus equipos.
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -60,10 +64,11 @@ const recentWorks: WorkItem[] = [
             <div class="aspect-[4/5] overflow-hidden">
               <Image
                 src={work.image}
-                alt={work.title}
+                alt={work.alt}
                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
                 width={600}
                 height={750}
+                loading="lazy"
               />
             </div>
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />

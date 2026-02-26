@@ -10,39 +10,33 @@ import Footer from "../components/organisms/Footer.astro";
 import FloatingWhatsApp from "../components/organisms/FloatingWhatsApp.astro";
 import RecentWork from "../components/sections/RecentWork.astro";
 import ProcessSteps from "../components/sections/ProcessSteps.astro";
-import GuaranteeBanner from "../components/sections/GuaranteeBanner.astro";
 import Pricing from "../components/sections/Pricing.astro";
 import FAQ from "../components/sections/FAQ.astro";
 import ScrollToTop from "../components/organisms/ScrollToTop.astro";
 ---
 
 <Layout
-  title="Inkoo Sublimations - Impresión Profesional de Camisetas para Negocios"
-  description="Sublimación de alta calidad para gimnasios, empresas de construcción y organizadores de eventos. Servicio rápido, resultados impecables, atención local en España."
+  title="Inkoo Sublimation | Estampación Profesional de Camisetas para Empresas y Equipos"
+  description="Estampación textil profesional para PYMEs, gimnasios y equipos deportivos. Packs desde 6 unidades con envío gratis. Sublimación y vinilo de alta resistencia. Presupuesto en 24h."
 >
   <!-- Navigation -->
-  <Navbar />
+  <header>
+    <Navbar />
+  </header>
 
   <!-- Main Content -->
   <main>
     <!-- Hero Section -->
-    <article>
-      <Hero />
-    </article>
+    <Hero />
 
     <!-- Value Proposition Section -->
-    <section>
-      <ValueProposition />
-    </section>
+    <ValueProposition />
 
-    <!-- Recent Work Section -->
+    <!-- Recent Work / Portfolio Section -->
     <RecentWork />
 
     <!-- Process Steps Section -->
     <ProcessSteps />
-
-    <!-- Guarantee Banner Section -->
-    <!-- <GuaranteeBanner /> -->
 
     <!-- Pricing Section -->
     <Pricing />
@@ -51,19 +45,18 @@ import ScrollToTop from "../components/organisms/ScrollToTop.astro";
     <FAQ />
 
     <!-- Contact Form Section -->
-    <section>
-      <ContactForm />
-    </section>
+    <ContactForm />
   </main>
 
   <!-- Footer -->
   <Footer />
 
   <!-- Floating Buttons -->
-  <section
+  <aside
+    aria-label="Acciones rápidas"
     class="fixed bottom-6 right-6 z-50 flex flex-col gap-y-5 items-center justify-center"
   >
     <ScrollToTop />
     <FloatingWhatsApp />
-  </section>
+  </aside>
 </Layout>

@@ -3,19 +3,56 @@ const steps = [
   {
     icon: "file-text",
     title: "1. Pides Presupuesto",
-    desc: "Envíanos tu logo e idea por WhatsApp. Te responderemos en menos de 24h con una propuesta clara y sin compromiso.",
+    desc: "Envíanos el logo de tu empresa y la cantidad de prendas por WhatsApp. Te respondemos en menos de 24h con un presupuesto cerrado y sin compromiso.",
   },
   {
     icon: "monitor-check",
     title: "2. Apruebas el Diseño",
-    desc: "Te enviamos un mockup digital gratuito para que veas cómo quedará tu prenda. No fabricamos nada sin tu OK final.",
+    desc: "Te preparamos un mockup digital gratuito para que veas exactamente cómo quedarán las prendas de tu equipo. No producimos nada sin tu aprobación.",
   },
   {
     icon: "truck",
-    title: "3. Entrega Final",
-    desc: '<strong class="text-inkoo-black">Producción:</strong> 3-5 días hábiles. <strong class="text-inkoo-black">Envío:</strong> Gratis, asegurado y con seguimiento online.<br><span class="text-sm text-gray-400">(El plazo de transporte es adicional al tiempo de taller).</span>',
+    title: "3. Recibe tu Pedido",
+    desc: '<strong class="text-inkoo-black">Producción:</strong> 3-5 días hábiles. <strong class="text-inkoo-black">Envío:</strong> Gratis, asegurado y con seguimiento para tu tranquilidad.<br><span class="text-sm text-gray-400">(El plazo de transporte es adicional al tiempo de taller).</span>',
   },
 ];
+
+// HowTo structured data for rich snippets
+const howToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Cómo pedir camisetas personalizadas para tu empresa o equipo",
+  description: "Proceso de pedido de estampación textil profesional en Inkoo Sublimation. Desde el presupuesto hasta la entrega en 3 pasos simples.",
+  totalTime: "P5D",
+  estimatedCost: {
+    "@type": "MonetaryAmount",
+    currency: "EUR",
+    value: "8.90",
+  },
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Pedir presupuesto",
+      text: "Envía el logo de tu empresa y la cantidad de prendas por WhatsApp. Te respondemos en menos de 24h con un presupuesto cerrado y sin compromiso.",
+      url: "https://www.inkoosub.com/#proceso",
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Aprobar el diseño",
+      text: "Te preparamos un mockup digital gratuito para que veas exactamente cómo quedarán las prendas de tu equipo. No producimos nada sin tu aprobación.",
+      url: "https://www.inkoosub.com/#proceso",
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Recibir el pedido",
+      text: "Producción en 3-5 días hábiles. Envío gratis, asegurado y con seguimiento. El plazo de transporte es adicional al tiempo de taller.",
+      url: "https://www.inkoosub.com/#proceso",
+    },
+  ],
+};
 ---
 
 <section id="proceso" class="py-20 lg:py-32 relative bg-white overflow-hidden">
@@ -36,6 +73,7 @@ const steps = [
       class="absolute top-20 left-[10%] w-6 h-6 text-inkoo-cyan/40 animate-pulse"
       viewBox="0 0 24 24"
       fill="currentColor"
+      aria-hidden="true"
     >
       <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"
       ></path>
@@ -44,6 +82,7 @@ const steps = [
       class="absolute bottom-20 right-[10%] w-8 h-8 text-inkoo-magenta/30 animate-pulse delay-700"
       viewBox="0 0 24 24"
       fill="currentColor"
+      aria-hidden="true"
     >
       <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"
       ></path>
@@ -52,6 +91,7 @@ const steps = [
       class="absolute top-1/2 right-[5%] w-4 h-4 text-inkoo-yellow/40 animate-pulse delay-1000"
       viewBox="0 0 24 24"
       fill="currentColor"
+      aria-hidden="true"
     >
       <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"
       ></path>
@@ -63,7 +103,7 @@ const steps = [
       <h2
         class="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium text-inkoo-black mb-6"
       >
-        Tu pedido listo en <span class="text-inkoo-magenta"
+        Equipa a tu equipo en <span class="text-inkoo-magenta"
           >3 pasos simples</span
         >
       </h2>
@@ -158,4 +198,7 @@ const steps = [
       }
     </div>
   </div>
+
+  <!-- HowTo Structured Data for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(howToJsonLd)} />
 </section>
