@@ -245,24 +245,13 @@ import Button from "../atoms/Button.astro";
           </button>
         </div>
 
-        <!-- Success message -->
-        <div
-          id="form-success"
-          class="hidden mt-4 p-4 bg-green-50 border border-green-200 rounded-xl text-center"
-        >
-          <p class="text-green-700 font-medium">
-            ✅ ¡Solicitud enviada correctamente! Te contactaremos en menos de
-            24h.
-          </p>
-        </div>
-
         <!-- Error message -->
         <div
           id="form-error"
           class="hidden mt-4 p-4 bg-red-50 border border-red-200 rounded-xl text-center"
         >
           <p class="text-red-700 font-medium" id="error-text">
-            ❌ Hubo un error al enviar. Inténtalo de nuevo.
+            Hubo un error al enviar. Inténtalo de nuevo.
           </p>
         </div>
       </form>
@@ -329,6 +318,37 @@ import Button from "../atoms/Button.astro";
           }
         });
 
+        // Modal logic
+        const successModal = document.getElementById("success-modal");
+        const modalOverlay = document.getElementById("modal-overlay");
+        const modalCard = document.getElementById("modal-card");
+        const modalCloseBtn = document.getElementById("modal-close-btn");
+
+        function openModal() {
+          successModal?.classList.remove("hidden");
+          // Trigger animation on next frame
+          requestAnimationFrame(() => {
+            modalCard?.classList.remove("scale-90", "opacity-0");
+            modalCard?.classList.add("scale-100", "opacity-100");
+          });
+        }
+
+        function closeModal() {
+          modalCard?.classList.remove("scale-100", "opacity-100");
+          modalCard?.classList.add("scale-90", "opacity-0");
+          setTimeout(() => {
+            successModal?.classList.add("hidden");
+          }, 300);
+        }
+
+        modalCloseBtn?.addEventListener("click", closeModal);
+        modalOverlay?.addEventListener("click", closeModal);
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && !successModal?.classList.contains("hidden")) {
+            closeModal();
+          }
+        });
+
         // Handle form submission
         const form = document.getElementById("contact-form") as HTMLFormElement;
         const submitBtn = document.getElementById(
@@ -336,7 +356,6 @@ import Button from "../atoms/Button.astro";
         ) as HTMLButtonElement;
         const btnText = document.getElementById("btn-text");
         const btnSpinner = document.getElementById("btn-spinner");
-        const successMsg = document.getElementById("form-success");
         const errorMsg = document.getElementById("form-error");
         const errorText = document.getElementById("error-text");
 
@@ -344,7 +363,6 @@ import Button from "../atoms/Button.astro";
           e.preventDefault();
 
           // Reset messages
-          successMsg?.classList.add("hidden");
           errorMsg?.classList.add("hidden");
 
           // Show loading state
@@ -363,25 +381,22 @@ import Button from "../atoms/Button.astro";
             const result = await response.json();
 
             if (response.ok && result.success) {
-              // Success
-              successMsg?.classList.remove("hidden");
-              setTimeout(() => successMsg?.classList.add("hidden"), 3000);
+              // Success — show modal
               form.reset();
               updateFileUI();
+              openModal();
             } else {
               // Server error
               if (errorText)
-                errorText.textContent = `❌ ${result.error || "Error al enviar. Inténtalo de nuevo."}`;
+                errorText.textContent = result.error || "Error al enviar. Inténtalo de nuevo.";
               errorMsg?.classList.remove("hidden");
-              setTimeout(() => errorMsg?.classList.add("hidden"), 3000);
             }
           } catch (err) {
             // Network error
             if (errorText)
               errorText.textContent =
-                "❌ Error de conexión. Comprueba tu internet e inténtalo de nuevo.";
+                "Error de conexión. Comprueba tu internet e inténtalo de nuevo.";
             errorMsg?.classList.remove("hidden");
-            setTimeout(() => errorMsg?.classList.add("hidden"), 3000);
           } finally {
             // Reset button
             if (submitBtn) submitBtn.disabled = false;
@@ -393,3 +408,46 @@ import Button from "../atoms/Button.astro";
     </div>
   </div>
 </section>
+
+<!-- Success Modal (outside section so fixed overlay covers full viewport) -->
+<div
+  id="success-modal"
+  class="hidden fixed inset-0 z-50 flex items-center justify-center p-4"
+>
+  <!-- Overlay -->
+  <div
+    id="modal-overlay"
+    class="absolute inset-0 bg-black/50 backdrop-blur-sm"
+  ></div>
+
+  <!-- Modal Card -->
+  <div
+    id="modal-card"
+    class="relative bg-white rounded-2xl p-8 sm:p-10 max-w-md w-full text-center shadow-2xl scale-90 opacity-0 transition-all duration-300"
+  >
+    <!-- Check Icon -->
+    <div class="mx-auto mb-6 w-20 h-20 rounded-full bg-gradient-to-br from-inkoo-magenta to-pink-600 flex items-center justify-center shadow-lg shadow-inkoo-magenta/30">
+      <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+      </svg>
+    </div>
+
+    <!-- Title -->
+    <h3 class="text-2xl sm:text-3xl font-heading font-semibold text-inkoo-black mb-3">
+      ¡Solicitud enviada!
+    </h3>
+
+    <!-- Description -->
+    <p class="text-gray-600 mb-8">
+      Nos pondremos en contacto contigo pronto para ofrecerte una solución personalizada.
+    </p>
+
+    <!-- Close Button -->
+    <button
+      id="modal-close-btn"
+      class="inline-flex items-center justify-center px-8 py-3 bg-inkoo-magenta text-white font-semibold rounded-full hover:bg-pink-600 transition-all duration-300 shadow-lg shadow-inkoo-magenta/30 hover:shadow-xl hover:shadow-inkoo-magenta/40"
+    >
+      Entendido
+    </button>
+  </div>
+</div>
