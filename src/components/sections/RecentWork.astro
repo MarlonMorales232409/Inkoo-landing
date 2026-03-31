@@ -4,6 +4,9 @@ import type { ImageMetadata } from "astro";
 import hosteleriaImg from "../../assets/images/hosteleria.jpg";
 import gimnasioImg from "../../assets/images/gimnasio.jpg";
 import eventosImg from "../../assets/images/eventos.jpg";
+import tazasImg from "../../assets/images/tazas.jpg";
+import corporativoImg from "../../assets/images/corporativo.jpg";
+import gymTshirt from "../../assets/images/gym-tshirt.png";
 
 interface WorkItem {
   title: string;
@@ -20,10 +23,22 @@ const recentWorks: WorkItem[] = [
     alt: "Camisetas personalizadas con logo para personal de restaurante y hostelería",
   },
   {
+    title: "Tazas con tu logo",
+    image: tazasImg,
+    category: "Tazas",
+    alt: "Tazas personalizadas con logo de empresa mediante sublimación",
+  },
+  {
     title: "Camisetas para gimnasios",
     image: gimnasioImg,
     category: "Fitness",
     alt: "Camisetas personalizadas para gimnasios y centros deportivos",
+  },
+  {
+    title: "Staff para eventos",
+    image: corporativoImg,
+    category: "Corporativo",
+    alt: "Camisetas de staff personalizadas para eventos y empresas",
   },
   {
     title: "Camisetas para eventos",
@@ -31,17 +46,21 @@ const recentWorks: WorkItem[] = [
     category: "Eventos",
     alt: "Camisetas personalizadas para equipos y eventos corporativos",
   },
+  {
+    title: "Ropa deportiva personalizada",
+    image: gymTshirt,
+    category: "Deportivo",
+    alt: "Camisetas deportivas personalizadas con diseño completo",
+  },
 ];
 ---
 
 <section id="trabajos" class="py-20 lg:py-32 relative overflow-hidden">
-  <!-- Light background -->
   <!-- Mesh Gradient Background -->
-  <div class="absolute inset-0 bg-mesh-gradient opacity-80 pointer-events-none">
-  </div>
+  <div class="absolute inset-0 bg-mesh-gradient opacity-80 pointer-events-none"></div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="text-center mb-16" data-aos="fade-up">
+  <div class="relative z-10">
+    <div class="text-center mb-16 px-4 sm:px-6 lg:px-8" data-aos="fade-up">
       <h2
         class="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium text-white mb-6"
       >
@@ -53,37 +72,76 @@ const recentWorks: WorkItem[] = [
         Empresas, negocios y organizadores de eventos confían en Inkoo para personalizar sus prendas.
       </p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {
-        recentWorks.map((work, index) => (
-          <div
-            class="group relative overflow-hidden rounded-2xl border border-white/10 bg-inkoo-black/50 backdrop-blur-sm transition-all duration-300 hover:border-inkoo-cyan/30"
-            data-aos="fade-up"
-            data-aos-delay={index * 200}
-          >
-            <div class="aspect-[4/5] overflow-hidden">
-              <Image
-                src={work.image}
-                alt={work.alt}
-                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
-                width={600}
-                height={750}
-                loading="lazy"
-              />
+
+    <!-- Infinite Marquee Carousel -->
+    <div class="marquee-container overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+      <div class="marquee-track flex gap-6">
+        {
+          [...recentWorks, ...recentWorks].map((work) => (
+            <div class="marquee-item flex-shrink-0 w-[300px] sm:w-[350px] lg:w-[400px]">
+              <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-inkoo-black/50 backdrop-blur-sm transition-all duration-300 hover:border-inkoo-cyan/30">
+                <div class="aspect-[4/5] overflow-hidden">
+                  <Image
+                    src={work.image}
+                    alt={work.alt}
+                    class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                    width={400}
+                    height={500}
+                    loading="lazy"
+                  />
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+                <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <span class="inline-block px-3 py-1 bg-inkoo-cyan/20 text-inkoo-cyan text-xs font-bold uppercase tracking-wider rounded-full mb-3 backdrop-blur-md border border-inkoo-cyan/20">
+                    {work.category}
+                  </span>
+                  <h3 class="text-white text-xl sm:text-2xl font-heading font-bold mb-2 group-hover:text-inkoo-yellow transition-colors duration-300">
+                    {work.title}
+                  </h3>
+                  <div class="h-1 w-12 bg-inkoo-magenta rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                </div>
+              </div>
             </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-            <div class="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-              <span class="inline-block px-3 py-1 bg-inkoo-cyan/20 text-inkoo-cyan text-xs font-bold uppercase tracking-wider rounded-full mb-3 backdrop-blur-md border border-inkoo-cyan/20">
-                {work.category}
-              </span>
-              <h3 class="text-white text-2xl font-heading font-bold mb-2 group-hover:text-inkoo-yellow transition-colors duration-300">
-                {work.title}
-              </h3>
-              <div class="h-1 w-12 bg-inkoo-magenta rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-            </div>
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .marquee-container {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 5%,
+      black 95%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 5%,
+      black 95%,
+      transparent 100%
+    );
+  }
+
+  .marquee-track {
+    animation: marquee 35s linear infinite;
+    width: max-content;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>
