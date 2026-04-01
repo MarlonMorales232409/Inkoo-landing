@@ -20,19 +20,19 @@ const recentWorks: WorkItem[] = [
     title: "Uniformes para hostelería",
     image: hosteleriaImg,
     category: "Hostelería",
-    alt: "Camisetas personalizadas con logo para personal de restaurante y hostelería",
+    alt: "Equipo de baristas con camisetas y delantales personalizados para cafetería",
   },
   {
     title: "Tazas con tu logo",
     image: tazasImg,
     category: "Tazas",
-    alt: "Tazas personalizadas con logo de empresa mediante sublimación",
+    alt: "Taza personalizada con diseño impreso mediante sublimación",
   },
   {
-    title: "Camisetas para gimnasios",
+    title: "Camisetas solidarias",
     image: gimnasioImg,
-    category: "Fitness",
-    alt: "Camisetas personalizadas para gimnasios y centros deportivos",
+    category: "ONG",
+    alt: "Voluntarios con camisetas personalizadas para acción solidaria",
   },
   {
     title: "Staff para eventos",
@@ -41,10 +41,10 @@ const recentWorks: WorkItem[] = [
     alt: "Camisetas de staff personalizadas para eventos y empresas",
   },
   {
-    title: "Camisetas para eventos",
+    title: "Camisetas de equipo",
     image: eventosImg,
     category: "Eventos",
-    alt: "Camisetas personalizadas para equipos y eventos corporativos",
+    alt: "Grupo con camisetas personalizadas formando la palabra TEAM",
   },
   {
     title: "Ropa deportiva personalizada",
@@ -80,13 +80,13 @@ const recentWorks: WorkItem[] = [
           [...recentWorks, ...recentWorks].map((work) => (
             <div class="marquee-item flex-shrink-0 w-[300px] sm:w-[350px] lg:w-[400px]">
               <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-inkoo-black/50 backdrop-blur-sm transition-all duration-300 hover:border-inkoo-cyan/30">
-                <div class="aspect-[4/5] overflow-hidden">
+                <div class="aspect-[4/3] overflow-hidden">
                   <Image
                     src={work.image}
                     alt={work.alt}
                     class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
-                    width={400}
-                    height={500}
+                    width={800}
+                    height={600}
                     loading="lazy"
                   />
                 </div>
